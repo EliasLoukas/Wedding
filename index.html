@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elie & Stephanie's Wedding</title>
 
-  <!-- Elegant fonts (optional but nice) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -36,7 +35,7 @@
     .bg{
       position:fixed;
       inset:0;
-      background-image: url("bg.png"); /* Put your photo named bg.png next to this HTML */
+      background-image: url("bg.png");
       background-size: cover;
       background-position: center;
       background-repeat:no-repeat;
@@ -74,7 +73,7 @@
       100%{ transform: translate(var(--x), var(--y)) scale(1.2); opacity:0; }
     }
 
-    /* Overlay */
+    /* Overlay (OPEN) */
     #envelope-overlay{
       position:fixed;
       inset:0;
@@ -124,13 +123,8 @@
       color: var(--gold);
       text-shadow: 0 10px 24px rgba(197,160,89,0.10);
     }
-    .overlay-sub{
-      margin:0 0 12px;
-      color: #5d5d5d;
-      font-size: 1.05rem;
-    }
 
-    /* Heart seal (NO ball) */
+    /* Heart seal */
     .wax-seal-heart{
       width: 170px;
       height: 170px;
@@ -389,6 +383,106 @@
       text-shadow: 0 12px 24px rgba(0,0,0,0.45);
       font-size: .95rem;
     }
+
+    /* =========================
+       END ENVELOPE OVERLAY
+       ========================= */
+    #end-overlay{
+      position: fixed;
+      inset: 0;
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index: 10000;
+      background: rgba(255,255,255,0.35);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transition: opacity .6s ease;
+      padding: 18px;
+    }
+    #end-overlay.show{
+      display:flex;
+      opacity: 1;
+    }
+    .end-card{
+      width: min(520px, 92vw);
+      border-radius: 28px;
+      background: rgba(255,255,255,0.86);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 22px 18px 22px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .end-msg{
+      margin: 0 0 12px;
+      color: #5b5b5b;
+      font-size: 1.06rem;
+      font-weight: 600;
+    }
+
+    /* Envelope animation */
+    .envelope{
+      width: min(420px, 92%);
+      margin: 10px auto 0;
+      position: relative;
+      height: 240px;
+      animation: envelopeIn .7s ease-out both;
+    }
+    @keyframes envelopeIn{
+      from { transform: translateY(18px); opacity:0; }
+      to   { transform: translateY(0); opacity:1; }
+    }
+    .env-back{
+      position:absolute; inset: 40px 0 0 0;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(197,160,89,0.22);
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    }
+    .env-front{
+      position:absolute; left:0; right:0; bottom:0; height: 150px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(197,160,89,0.22);
+      border-radius: 0 0 18px 18px;
+    }
+    .env-flap{
+      position:absolute; left:0; right:0; top:40px; height: 140px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(197,160,89,0.22);
+      transform-origin: top center;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      animation: flapClose .9s ease-in-out both;
+      animation-delay: .2s;
+    }
+    @keyframes flapClose{
+      0%   { transform: rotateX(180deg); }
+      100% { transform: rotateX(0deg); }
+    }
+
+    /* Replace end heart with the same overlay-title text */
+    .end-title-name{
+      position:absolute;
+      left:50%;
+      top: 120px;
+      transform: translateX(-50%);
+      width: 90%;
+      text-align:center;
+      opacity:0;
+      animation: endTitlePop .8s ease-out both;
+      animation-delay: .65s;
+      pointer-events:none;
+    }
+    @keyframes endTitlePop{
+      from{ transform: translateX(-50%) translateY(6px) scale(0.98); opacity:0; }
+      to{ transform: translateX(-50%) translateY(0) scale(1); opacity:1; }
+    }
+    /* Make the overlay-title look good inside envelope */
+    .end-title-name .overlay-title{
+      margin: 0;
+      font-size: clamp(28px, 5vw, 44px);
+    }
   </style>
 </head>
 
@@ -400,9 +494,8 @@
   <div id="envelope-overlay">
     <div class="overlay-card">
       <div class="topline">Save The Date</div>
-      <div class="overlay-title">Elie   &amp; Stephanie</div>
+      <div class="overlay-title">Elie &amp; Stephanie</div>
 
-      <!-- Beating HEART with E&S (NO BALL) -->
       <div class="wax-seal-heart" onclick="openInvite(event)" ontouchstart="openInvite(event)" role="button" aria-label="Open invitation">
         <svg viewBox="0 0 220 220" width="170" height="170" aria-hidden="true">
           <defs>
@@ -411,56 +504,41 @@
               <stop offset="55%" stop-color="#cc1235"/>
               <stop offset="100%" stop-color="#7a0017"/>
             </radialGradient>
-
             <linearGradient id="heartShine" x1="0" x2="1">
               <stop offset="0%" stop-color="rgba(255,255,255,0)" />
               <stop offset="55%" stop-color="rgba(255,255,255,0.40)" />
               <stop offset="100%" stop-color="rgba(255,255,255,0)" />
             </linearGradient>
-
             <filter id="heartShadow" x="-30%" y="-30%" width="160%" height="160%">
               <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="rgba(0,0,0,0.30)"/>
             </filter>
           </defs>
 
-          <path
-            filter="url(#heartShadow)"
-            fill="url(#heartGrad)"
+          <path filter="url(#heartShadow)" fill="url(#heartGrad)"
             d="M110 190
                C110 190, 30 140, 30 88
                C30 55, 55 34, 82 34
                C98 34, 108 42, 110 52
                C112 42, 122 34, 138 34
                C165 34, 190 55, 190 88
-               C190 140, 110 190, 110 190Z"
-          />
-          <path
-            fill="none"
-            stroke="rgba(255,255,255,0.18)"
-            stroke-width="5"
+               C190 140, 110 190, 110 190Z"/>
+          <path fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="5"
             d="M110 190
                C110 190, 30 140, 30 88
                C30 55, 55 34, 82 34
                C98 34, 108 42, 110 52
                C112 42, 122 34, 138 34
                C165 34, 190 55, 190 88
-               C190 140, 110 190, 110 190Z"
-          />
-          <path
-            opacity="0.55"
-            fill="url(#heartShine)"
+               C190 140, 110 190, 110 190Z"/>
+          <path opacity="0.55" fill="url(#heartShine)"
             d="M55 70
                C82 42, 118 42, 150 66
-               C125 54, 90 54, 62 82 Z"
-          />
+               C125 54, 90 54, 62 82 Z"/>
 
           <text x="110" y="118" text-anchor="middle"
                 font-family="Georgia, serif" font-size="30" font-weight="700"
                 fill="rgba(255,255,255,0.92)"
-                style="letter-spacing: 1px;">
-            E &amp; S
-          </text>
-
+                style="letter-spacing: 1px;">E &amp; S</text>
           <text x="110" y="148" text-anchor="middle"
                 font-family="Georgia, serif" font-size="24"
                 fill="rgba(255,255,255,0.92)"></text>
@@ -468,6 +546,24 @@
       </div>
 
       <div class="seal-hint">Tap the heart to <b>open</b> ❤️</div>
+    </div>
+  </div>
+
+  <!-- END ENVELOPE OVERLAY (AFTER RSVP SUCCESS) -->
+  <div id="end-overlay" aria-hidden="true">
+    <div class="end-card">
+      <p class="end-msg">We can’t wait to celebrate with you! ✨</p>
+
+      <div class="envelope">
+        <div class="env-back"></div>
+        <div class="env-flap"></div>
+        <div class="env-front"></div>
+
+        <!-- REPLACED: instead of heart, show the same overlay-title -->
+        <div class="end-title-name">
+          <div class="overlay-title">Elie &amp; Stephanie</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -491,7 +587,6 @@
       </div>
 
       <div class="grid">
-        <!-- LOCATION CARD with Maps + Calendar -->
         <div class="card reveal-on-scroll">
           <h3>Location</h3>
           <p><strong>El Wardieh Church - Kfarshima</strong></p>
@@ -510,7 +605,6 @@
           </div>
         </div>
 
-        <!-- Cocktail -->
         <div class="card reveal-on-scroll">
           <h3>After Ceremony</h3>
           <p><strong>Cocktail Dinner</strong></p>
@@ -518,7 +612,6 @@
         </div>
       </div>
 
-      <!-- GIFT REGISTRY -->
       <div class="gift reveal-on-scroll" id="gift">
         <h3>Gift Registry</h3>
         <p class="line">Send your gift using <strong>Whish Money</strong></p>
@@ -528,37 +621,10 @@
           Whish Account ID: <span class="num">20361932-03</span>
         </p>
 
-        <div style="margin-top:12px;">
-          <label style="display:block; margin-bottom:6px; color:#555;">Enter amount (USD)</label>
-          <div style="display:flex; gap:10px;">
-            <input
-              id="giftAmount"
-              type="number"
-              inputmode="decimal"
-              min="1"
-              step="1"
-              placeholder="e.g. 50"
-              style="flex:1; margin:0;"
-            />
-            <button
-              type="button"
-              id="payGiftBtn"
-              style="width:auto; padding:14px 16px; margin:0; white-space:nowrap;"
-              onclick="payWithWPay()"
-            >
-              Pay
-            </button>
-          </div>
-
-          <div class="actions" style="margin-top:12px;">
-        
-          </div>
-
           <p id="giftError" style="display:none; margin:10px 0 0; color:#b00020; font-weight:600;"></p>
         </div>
       </div>
 
-      <!-- RSVP -->
       <div class="rsvp reveal-on-scroll">
         <h3 class="rsvp-title">RSVP</h3>
         <p class="rsvp-sub">Kindly confirm your attendance 💛</p>
@@ -587,14 +653,9 @@
   </div>
 
   <script>
-    // ====== SETTINGS YOU CAN CHANGE ======
-    // 1) RSVP Google Apps Script URL (yours)
+    // ====== SETTINGS ======
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
-
-    // 2) WPay Checkout URL (paste your real link here)
     const WPAY_CHECKOUT_URL = "PASTE_WPAY_CHECKOUT_LINK_HERE";
-
-    // 3) Whish receiver info
     const WHISH_PHONE = "+96171057982";
     const WHISH_ACCOUNT_ID = "20361932-03";
 
@@ -615,8 +676,6 @@
         heart.style.top = y + "px";
         heart.style.setProperty("--x", offsetX);
         heart.style.setProperty("--y", offsetY);
-
-        // Slight random size variety
         heart.style.fontSize = (12 + Math.random() * 10) + "px";
 
         container.appendChild(heart);
@@ -633,7 +692,6 @@
       const overlay = document.getElementById("envelope-overlay");
       const content = document.getElementById("main-content");
 
-      // Burst from tap point (if available), otherwise center of screen
       let x = window.innerWidth / 2;
       let y = window.innerHeight / 2;
 
@@ -669,7 +727,6 @@
     // ====== COUNTDOWN ======
     const weddingDate = new Date("September 12, 2026 19:00:00").getTime();
     function pad2(n){ return String(n).padStart(2,'0'); }
-
     function updateTimer(){
       const now = new Date().getTime();
       const diff = weddingDate - now;
@@ -703,7 +760,6 @@
         "&text=" + encodeURIComponent(title) +
         "&location=" + encodeURIComponent(location) +
         "&dates=" + encodeURIComponent(startUTC + "/" + endUTC);
-
       window.open(url, "_blank", "noopener");
     }
 
@@ -712,7 +768,6 @@
       const amountEl = document.getElementById("giftAmount");
       const errEl = document.getElementById("giftError");
       const btn = document.getElementById("payGiftBtn");
-
       const amount = Number(amountEl.value);
 
       if(!amountEl.value || Number.isNaN(amount) || amount <= 0){
@@ -730,18 +785,16 @@
         errEl.textContent = "Please enter a smaller amount.";
         return;
       }
+
       errEl.style.display = "none";
       errEl.textContent = "";
 
-      // If you did NOT paste a real link yet, use WhatsApp fallback automatically
       if(!WPAY_CHECKOUT_URL || WPAY_CHECKOUT_URL.includes("PASTE_WPAY_CHECKOUT_LINK_HERE")){
         openWhatsAppFallback(amount);
         return;
       }
 
       const note = `Wedding gift - Elie & Stephanie | Phone: ${WHISH_PHONE} | Account ID: ${WHISH_ACCOUNT_ID}`;
-
-      // Generic params (you may need to change param names based on the real WPay link requirements)
       const url =
         WPAY_CHECKOUT_URL +
         "?amount=" + encodeURIComponent(amount) +
@@ -755,22 +808,28 @@
       window.location.href = url;
     }
 
-    // ====== WhatsApp fallback link updates ======
     function openWhatsAppFallback(amount){
       const msg = `Hello, I would like to send a Whish Money wedding gift for Elie & Stephanie. Account ID: ${WHISH_ACCOUNT_ID}. Phone: ${WHISH_PHONE}. Amount: ${amount} USD.`;
       const wa = `https://wa.me/96171057982?text=${encodeURIComponent(msg)}`;
       window.open(wa, "_blank", "noopener");
     }
 
-    // Make WhatsApp fallback button always reflect the amount if entered
     function syncWhatsAppButton(){
       const amountEl = document.getElementById("giftAmount");
       const waBtn = document.getElementById("waFallback");
       const amount = Number(amountEl.value);
       const amtText = (!amountEl.value || Number.isNaN(amount) || amount <= 0) ? "___" : amount;
-
       const msg = `Hello, I would like to send a Whish Money wedding gift for Elie & Stephanie. Account ID: ${WHISH_ACCOUNT_ID}. Phone: ${WHISH_PHONE}. Amount: ${amtText} USD.`;
       waBtn.href = `https://wa.me/96171057982?text=${encodeURIComponent(msg)}`;
+    }
+
+    // ====== END ENVELOPE AFTER RSVP ======
+    function showEndEnvelope(){
+      createFloatingHearts(window.innerWidth/2, window.innerHeight/2);
+      document.body.style.overflow = "hidden";
+      const end = document.getElementById("end-overlay");
+      end.classList.add("show");
+      end.setAttribute("aria-hidden", "false");
     }
 
     // ====== RSVP SUBMISSION ======
@@ -785,6 +844,7 @@
         .then(() => {
           form.style.display = "none";
           document.getElementById('successMessage').style.display = "block";
+          setTimeout(showEndEnvelope, 1200);
         })
         .catch(() => {
           btn.disabled = false;
