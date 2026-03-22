@@ -506,35 +506,14 @@
               <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="rgba(0,0,0,0.30)"/>
             </filter>
           </defs>
-
           <path filter="url(#heartShadow)" fill="url(#heartGrad)"
-            d="M110 190
-               C110 190, 30 140, 30 88
-               C30 55, 55 34, 82 34
-               C98 34, 108 42, 110 52
-               C112 42, 122 34, 138 34
-               C165 34, 190 55, 190 88
-               C190 140, 110 190, 110 190Z"/>
+            d="M110 190 C110 190, 30 140, 30 88 C30 55, 55 34, 82 34 C98 34, 108 42, 110 52 C112 42, 122 34, 138 34 C165 34, 190 55, 190 88 C190 140, 110 190, 110 190Z"/>
           <path fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="5"
-            d="M110 190
-               C110 190, 30 140, 30 88
-               C30 55, 55 34, 82 34
-               C98 34, 108 42, 110 52
-               C112 42, 122 34, 138 34
-               C165 34, 190 55, 190 88
-               C190 140, 110 190, 110 190Z"/>
-          <path opacity="0.55" fill="url(#heartShine)"
-            d="M55 70
-               C82 42, 118 42, 150 66
-               C125 54, 90 54, 62 82 Z"/>
-
-          <text x="110" y="118" text-anchor="middle"
-                font-family="Georgia, serif" font-size="30" font-weight="700"
-                fill="rgba(255,255,255,0.92)"
-                style="letter-spacing: 1px;">E & S</text>
+            d="M110 190 C110 190, 30 140, 30 88 C30 55, 55 34, 82 34 C98 34, 108 42, 110 52 C112 42, 122 34, 138 34 C165 34, 190 55, 190 88 C190 140, 110 190, 110 190Z"/>
+          <path opacity="0.55" fill="url(#heartShine)" d="M55 70 C82 42, 118 42, 150 66 C125 54, 90 54, 62 82 Z"/>
+          <text x="110" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="rgba(255,255,255,0.92)" style="letter-spacing: 1px;">E & S</text>
         </svg>
       </div>
-
       <div class="seal-hint">Tap the heart to <b>open</b> ❤️</div>
     </div>
   </div>
@@ -555,14 +534,11 @@
 
   <div class="content" id="main-content">
     <div class="container">
-
       <div class="hero">
         <div class="kicker">WE ARE GETTING MARRIED</div>
         <h1>Elie & Stephanie</h1>
         <div class="date">Saturday, 12 September 2026 <br> 7:00 PM</div>
-
         <div class="divider"></div>
-
         <div class="countdown" id="timer" aria-label="Countdown timer">
           <div class="time-box"><span id="days">00</span><div class="time-label">Days</div></div>
           <div class="time-box"><span id="hours">00</span><div class="time-label">Hours</div></div>
@@ -576,20 +552,11 @@
           <h3>Location</h3>
           <p><strong>El Wardieh Church - Kfarshima</strong></p>
           <div class="meta">Saturday • 12/09/2026 • 7:00 PM</div>
-
           <div class="actions">
-            <a class="action-btn" target="_blank" rel="noopener"
-               href="https://maps.app.goo.gl/P6Gv7Z7U8P3J3u8u7">
-              📍 Open in Maps
-            </a>
-
-            <a class="action-btn" href="#"
-               onclick="addToCalendar(event,'Wedding - Elie & Stephanie','El Wardieh Church - Kfarshima','20260912T160000Z','20260912T190000Z')">
-              🗓️ Add to Calendar
-            </a>
+            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/P6Gv7Z7U8P3J3u8u7">📍 Open in Maps</a>
+            <a class="action-btn" href="#" onclick="addToCalendar(event,'Wedding - Elie & Stephanie','El Wardieh Church - Kfarshima','20260912T160000Z','20260912T190000Z')">🗓️ Add to Calendar</a>
           </div>
         </div>
-
         <div class="card reveal-on-scroll">
           <h3>After Ceremony</h3>
           <p><strong>Cocktail Dinner</strong></p>
@@ -609,41 +576,28 @@
       <div class="rsvp reveal-on-scroll">
         <h3 class="rsvp-title">RSVP</h3>
         <p class="rsvp-sub">Kindly confirm your attendance 💛</p>
-
         <form id="rsvpForm" autocomplete="on">
           <input id="fullName" type="text" name="Name" placeholder="Full Name" required>
-
-          <select id="guests" name="Guests">
-             </select>
-
+          <select id="guests" name="Guests"></select>
           <button type="submit" id="submitBtn">CONFIRM ATTENDANCE</button>
         </form>
-
         <div id="successMessage">We can’t wait to celebrate with you! ✨</div>
       </div>
-
       <div class="footer-note">With love • Elie & Stephanie</div>
     </div>
   </div>
 
   <script>
-    // ====== SETTINGS ======
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
 
-    // ====== DYNAMIC RSVP LOGIC ======
     function setupPersonalizedRSVP() {
         const urlParams = new URLSearchParams(window.location.search);
-        
-        // 1. Pre-fill name if ?name=Some_Name
         const guestName = urlParams.get('name');
         if(guestName) {
             document.getElementById('fullName').value = guestName.replace(/_/g, ' ');
         }
-
-        // 2. Set guest limit if ?max=3
         const maxGuests = parseInt(urlParams.get('max')) || 7; 
         const guestSelect = document.getElementById('guests');
-        
         guestSelect.innerHTML = "";
         for (let i = 1; i <= maxGuests; i++) {
             const opt = document.createElement('option');
@@ -653,42 +607,35 @@
         }
     }
 
-    // ====== FLOATING HEARTS ======
     function createFloatingHearts(x, y){
       const container = document.getElementById("floatingHearts");
-      const count = 18;
-
-      for(let i=0;i<count;i++){
+      for(let i=0;i<18;i++){
         const heart = document.createElement("div");
         heart.className = "tiny-heart";
         heart.textContent = "♥";
-
-        const offsetX = (Math.random() * 220 - 110) + "px";
-        const offsetY = (-Math.random() * 240 - 90) + "px";
-
         heart.style.left = x + "px";
         heart.style.top = y + "px";
-        heart.style.setProperty("--x", offsetX);
-        heart.style.setProperty("--y", offsetY);
+        heart.style.setProperty("--x", (Math.random() * 220 - 110) + "px");
+        heart.style.setProperty("--y", (-Math.random() * 240 - 90) + "px");
         heart.style.fontSize = (12 + Math.random() * 10) + "px";
-
         container.appendChild(heart);
         heart.addEventListener("animationend", () => heart.remove());
       }
     }
 
-    // ====== OPEN INVITE ======
     let opened = false;
     function openInvite(evt){
       if(opened) return;
       opened = true;
+      
+      // RUN LOGIC AGAIN TO ENSURE DROPDOWN IS CORRECT
+      setupPersonalizedRSVP();
 
       const overlay = document.getElementById("envelope-overlay");
       const content = document.getElementById("main-content");
 
       let x = window.innerWidth / 2;
       let y = window.innerHeight / 2;
-
       if(evt && evt.touches && evt.touches.length){
         x = evt.touches.clientX;
         y = evt.touches.clientY;
@@ -698,7 +645,6 @@
       }
 
       createFloatingHearts(x, y);
-
       overlay.classList.add("hidden-overlay");
       setTimeout(() => {
         content.classList.add("show-content");
@@ -707,72 +653,44 @@
       }, 800);
     }
 
-    // ====== SCROLL REVEAL ======
     function revealOnScroll(){
       const els = document.querySelectorAll(".reveal-on-scroll");
-      const vh = window.innerHeight;
       els.forEach(el => {
         const r = el.getBoundingClientRect();
-        if(r.top < vh - 60) el.classList.add("reveal");
+        if(r.top < window.innerHeight - 60) el.classList.add("reveal");
       });
     }
     window.addEventListener("scroll", revealOnScroll, { passive:true });
 
-    // ====== COUNTDOWN ======
     const weddingDate = new Date("September 12, 2026 19:00:00").getTime();
-    function pad2(n){ return String(n).padStart(2,'0'); }
     function updateTimer(){
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
-
-      if(diff < 0){
-        document.getElementById("timer").innerHTML = "The celebration has begun!";
-        return;
-      }
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-      const s = Math.floor((diff % (1000*60)) / 1000);
-
-      document.getElementById("days").textContent = pad2(d);
-      document.getElementById("hours").textContent = pad2(h);
-      document.getElementById("mins").textContent = pad2(m);
-      document.getElementById("secs").textContent = pad2(s);
+      const diff = weddingDate - new Date().getTime();
+      if(diff < 0){ document.getElementById("timer").innerHTML = "The celebration has begun!"; return; }
+      const pad = n => String(n).padStart(2,'0');
+      document.getElementById("days").textContent = pad(Math.floor(diff / 86400000));
+      document.getElementById("hours").textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById("mins").textContent = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById("secs").textContent = pad(Math.floor((diff % 60000) / 1000));
     }
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // ====== CALENDAR ======
-    function addToCalendar(e, title, location, startUTC, endUTC){
+    function addToCalendar(e, title, location, start, end){
       e.preventDefault();
-      const base = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-      const url = base + "&text=" + encodeURIComponent(title) + "&location=" + encodeURIComponent(location) + "&dates=" + encodeURIComponent(startUTC + "/" + endUTC);
-      window.open(url, "_blank", "noopener");
+      window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&dates=${start}/${end}`, "_blank");
     }
 
-    // ====== FORM SUBMIT ======
     const form = document.getElementById('rsvpForm');
     form.addEventListener('submit', e => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.innerHTML = "Saving...";
-
+      btn.disabled = true; btn.innerHTML = "Saving...";
       fetch(scriptURL, { method:'POST', body:new FormData(form)})
         .then(() => {
           form.style.display = "none";
           document.getElementById('successMessage').style.display = "block";
-          setTimeout(() => {
-            const end = document.getElementById("end-overlay");
-            end.classList.add("show");
-            document.body.style.overflow = "hidden";
-          }, 1200);
-        })
-        .catch(() => {
-          btn.disabled = false;
-          btn.innerHTML = "Try Again";
-          alert("Error saving RSVP!");
-        });
+          setTimeout(() => { document.getElementById("end-overlay").classList.add("show"); document.body.style.overflow = "hidden"; }, 1200);
+        }).catch(() => { btn.disabled = false; btn.innerHTML = "Try Again"; alert("Error!"); });
     });
 
     window.addEventListener('DOMContentLoaded', setupPersonalizedRSVP);
