@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elie & Stephanie's Wedding</title>
+  <title>Fouad & Lea's Wedding</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
     .bg{
       position:fixed;
       inset:0;
-      background-image: url("elias.jpeg");
+      background-image: url("fouad_lea.jpeg"); /* Updated placeholder for your image */
       background-size: cover;
       background-position: center;
       background-repeat:no-repeat;
@@ -487,7 +487,7 @@
   <div id="envelope-overlay">
     <div class="overlay-card">
       <div class="topline">Save The Date</div>
-      <div class="overlay-title">Elie & Stephanie</div>
+      <div class="overlay-title">Fouad & Lea</div>
 
       <div class="wax-seal-heart" onclick="openInvite(event)" ontouchstart="openInvite(event)" role="button" aria-label="Open invitation">
         <svg viewBox="0 0 220 220" width="170" height="170" aria-hidden="true">
@@ -511,7 +511,7 @@
           <path fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="5"
             d="M110 190 C110 190, 30 140, 30 88 C30 55, 55 34, 82 34 C98 34, 108 42, 110 52 C112 42, 122 34, 138 34 C165 34, 190 55, 190 88 C190 140, 110 190, 110 190Z"/>
           <path opacity="0.55" fill="url(#heartShine)" d="M55 70 C82 42, 118 42, 150 66 C125 54, 90 54, 62 82 Z"/>
-          <text x="110" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="rgba(255,255,255,0.92)" style="letter-spacing: 1px;">E & S</text>
+          <text x="110" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="rgba(255,255,255,0.92)" style="letter-spacing: 1px;">F & L</text>
         </svg>
       </div>
       <div class="seal-hint">Tap the heart to <b>open</b> ❤️</div>
@@ -526,7 +526,7 @@
         <div class="env-flap"></div>
         <div class="env-front"></div>
         <div class="end-title-name">
-          <div class="overlay-title">Elie & Stephanie</div>
+          <div class="overlay-title">Fouad & Lea</div>
         </div>
       </div>
     </div>
@@ -536,8 +536,8 @@
     <div class="container">
       <div class="hero">
         <div class="kicker">WE ARE GETTING MARRIED</div>
-        <h1>Elie & Stephanie</h1>
-        <div class="date">Saturday, 12 September 2026 <br> 7:00 PM</div>
+        <h1>Fouad & Lea</h1>
+        <div class="date">Sunday, 01 November 2026 <br> 5:00 PM</div>
         <div class="divider"></div>
         <div class="countdown" id="timer" aria-label="Countdown timer">
           <div class="time-box"><span id="days">00</span><div class="time-label">Days</div></div>
@@ -550,17 +550,22 @@
       <div class="grid">
         <div class="card reveal-on-scroll">
           <h3>Location</h3>
-          <p><strong>El Wardieh Church - Kfarshima</strong></p>
-          <div class="meta">Saturday • 12/09/2026 • 7:00 PM</div>
+          <p><strong>Notre Dame des Dons</strong></p>
+          <div class="meta">Sunday • 01/11/2026 • 5:00 PM</div>
           <div class="actions">
-            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/P6Gv7Z7U8P3J3u8u7">📍 Open in Maps</a>
-            <a class="action-btn" href="#" onclick="addToCalendar(event,'Wedding - Elie & Stephanie','El Wardieh Church - Kfarshima','20260912T160000Z','20260912T190000Z')">🗓️ Add to Calendar</a>
+            <!-- Replace with actual Google Maps link for Notre Dame des Dons -->
+            <a class="action-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/Notre+Dame+des+Dons">📍 Open in Maps</a>
+            <a class="action-btn" href="#" onclick="addToCalendar(event,'Wedding - Fouad & Lea','Notre Dame des Dons','20261101T150000Z','20261101T170000Z')">🗓️ Add to Calendar</a>
           </div>
         </div>
         <div class="card reveal-on-scroll">
-          <h3>After Ceremony</h3>
-          <p><strong>Cocktail Dinner</strong></p>
-          <div class="meta">In the Church Salon</div>
+          <h3>Reception</h3>
+          <p><strong>Atlal Plaza</strong></p>
+          <div class="meta">Dinner and Celebration to follow</div>
+          <div class="actions">
+             <!-- Replace with actual Google Maps link for Atlal Plaza -->
+            <a class="action-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/Atlal+Plaza">📍 Location</a>
+          </div>
         </div>
       </div>
 
@@ -583,11 +588,12 @@
         </form>
         <div id="successMessage">We can’t wait to celebrate with you! ✨</div>
       </div>
-      <div class="footer-note">With love • Elie & Stephanie</div>
+      <div class="footer-note">With love • Fouad & Lea</div>
     </div>
   </div>
 
   <script>
+    // Replace with your own Google Apps Script URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
 
     function setupPersonalizedRSVP() {
@@ -628,7 +634,6 @@
       if(opened) return;
       opened = true;
       
-      // RUN LOGIC AGAIN TO ENSURE DROPDOWN IS CORRECT
       setupPersonalizedRSVP();
 
       const overlay = document.getElementById("envelope-overlay");
@@ -637,8 +642,8 @@
       let x = window.innerWidth / 2;
       let y = window.innerHeight / 2;
       if(evt && evt.touches && evt.touches.length){
-        x = evt.touches.clientX;
-        y = evt.touches.clientY;
+        x = evt.touches[0].clientX;
+        y = evt.touches[0].clientY;
       } else if(evt && typeof evt.clientX === "number"){
         x = evt.clientX;
         y = evt.clientY;
@@ -662,7 +667,7 @@
     }
     window.addEventListener("scroll", revealOnScroll, { passive:true });
 
-    const weddingDate = new Date("September 12, 2026 19:00:00").getTime();
+    const weddingDate = new Date("November 01, 2026 17:00:00").getTime();
     function updateTimer(){
       const diff = weddingDate - new Date().getTime();
       if(diff < 0){ document.getElementById("timer").innerHTML = "The celebration has begun!"; return; }
