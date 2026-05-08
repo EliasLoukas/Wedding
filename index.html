@@ -596,19 +596,21 @@
     // Replace with your own Google Apps Script URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
 
-   function setupPersonalizedRSVP() {
+  function setupPersonalizedRSVP() {
     const urlParams = new URLSearchParams(window.location.search);
     
-    // 1. Handle Max Guests
-    // We look for ?max= in the URL. If it's missing, we default to 1.
+    // 1. Get the max guests from the URL (?max=2)
     const maxParam = urlParams.get('max');
+    
+    // Convert to number. If it's not a number or missing, default to 1
     const maxGuests = parseInt(maxParam) || 1; 
     
     const guestSelect = document.getElementById('guests');
     
     if(guestSelect) {
-        guestSelect.innerHTML = ""; // Clear any default options
+        guestSelect.innerHTML = ""; // Clear existing options
         
+        // Loop to create the exact number of options allowed
         for (let i = 1; i <= maxGuests; i++) {
             const opt = document.createElement('option');
             opt.value = i;
@@ -617,14 +619,12 @@
         }
     }
 
-    // 2. Clear the name field (Optional)
-    // This ensures the name field is empty for them to type in.
+    // 2. Clear Name field to let them type their own name
     const nameInput = document.getElementById('fullName');
-    if(nameInput && !urlParams.has('name')) {
+    if(nameInput) {
         nameInput.value = ""; 
     }
 }
-
     function createFloatingHearts(x, y){
       const container = document.getElementById("floatingHearts");
       for(let i=0;i<18;i++){
