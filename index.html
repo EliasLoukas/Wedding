@@ -35,7 +35,7 @@
     .bg{
       position:fixed;
       inset:0;
-      background-image: url("elias.jpeg"); /* Updated placeholder for your image */
+      background-image: url("elias.jpeg"); 
       background-size: cover;
       background-position: center;
       background-repeat:no-repeat;
@@ -419,9 +419,40 @@
       font-weight: 600;
     }
 
+    /* Video Specific Styles */
+    .video-wrapper {
+      position: absolute;
+      left: 50%;
+      top: 40px;
+      transform: translateX(-50%);
+      width: 85%;
+      height: 160px;
+      z-index: 1;
+      opacity: 0;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #end-overlay.show .video-wrapper {
+      opacity: 1;
+      animation: videoSlideOut 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation-delay: 0.8s;
+    }
+    @keyframes videoSlideOut {
+      from { transform: translateX(-50%) translateY(40px); }
+      to { transform: translateX(-50%) translateY(-70px); }
+    }
+
     .envelope{
       width: min(420px, 92%);
-      margin: 10px auto 0;
+      margin: 60px auto 0; /* Increased top margin for video space */
       position: relative;
       height: 240px;
       animation: envelopeIn .7s ease-out both;
@@ -442,6 +473,7 @@
       background: rgba(255,255,255,0.95);
       border: 1px solid rgba(197,160,89,0.22);
       border-radius: 0 0 18px 18px;
+      z-index: 3;
     }
     .env-flap{
       position:absolute; left:0; right:0; top:40px; height: 140px;
@@ -451,6 +483,7 @@
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       animation: flapClose .9s ease-in-out both;
       animation-delay: .2s;
+      z-index: 4;
     }
     @keyframes flapClose{
       0%   { transform: rotateX(180deg); }
@@ -468,6 +501,7 @@
       animation: endTitlePop .8s ease-out both;
       animation-delay: .65s;
       pointer-events:none;
+      z-index: 5;
     }
     @keyframes endTitlePop{
       from{ transform: translateX(-50%) translateY(6px) scale(0.98); opacity:0; }
@@ -522,7 +556,15 @@
     <div class="end-card">
       <p class="end-msg">We can’t wait to celebrate with you! ✨</p>
       <div class="envelope">
-        <div class="env-back"></div>
+        <div class="env-back">
+          <!-- The Video Placeholder -->
+          <div class="video-wrapper">
+            <video id="endVideo" playsinline muted loop>
+              <source src="your-video-file.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
         <div class="env-flap"></div>
         <div class="env-front"></div>
         <div class="end-title-name">
@@ -553,7 +595,6 @@
           <p><strong>Notre Dame des Dons</strong></p>
           <div class="meta">Sunday • 01/11/2026 • 5:00 PM</div>
           <div class="actions">
-            <!-- Replace with actual Google Maps link for Notre Dame des Dons -->
             <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFyy75vBijbQ1hvY7?g_st=ic">📍 Open in Maps</a>
             <a class="action-btn" href="#" onclick="addToCalendar(event,'Wedding - Fouad & Lea','Notre Dame des Dons','20261101T150000Z','20261101T170000Z')">🗓️ Add to Calendar</a>
           </div>
@@ -563,7 +604,6 @@
           <p><strong>Atlal Plaza</strong></p>
           <div class="meta">Dinner and Celebration to follow</div>
           <div class="actions">
-             <!-- Replace with actual Google Maps link for Atlal Plaza -->
             <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ENTtKWAsiehHiY89A?g_st=ic">📍 Location</a>
           </div>
         </div>
@@ -593,24 +633,16 @@
   </div>
 
   <script>
-    // Replace with your own Google Apps Script URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
 
   function setupPersonalizedRSVP() {
     const urlParams = new URLSearchParams(window.location.search);
-    
-    // 1. Get the max guests from the URL (?max=2)
     const maxParam = urlParams.get('max');
-    
-    // Convert to number. If it's not a number or missing, default to 1
     const maxGuests = parseInt(maxParam) || 1; 
-    
     const guestSelect = document.getElementById('guests');
     
     if(guestSelect) {
-        guestSelect.innerHTML = ""; // Clear existing options
-        
-        // Loop to create the exact number of options allowed
+        guestSelect.innerHTML = "";
         for (let i = 1; i <= maxGuests; i++) {
             const opt = document.createElement('option');
             opt.value = i;
@@ -618,12 +650,8 @@
             guestSelect.appendChild(opt);
         }
     }
-
-    // 2. Clear Name field to let them type their own name
     const nameInput = document.getElementById('fullName');
-    if(nameInput) {
-        nameInput.value = ""; 
-    }
+    if(nameInput) { nameInput.value = ""; }
 }
     function createFloatingHearts(x, y){
       const container = document.getElementById("floatingHearts");
@@ -645,22 +673,16 @@
     function openInvite(evt){
       if(opened) return;
       opened = true;
-      
       setupPersonalizedRSVP();
-
       const overlay = document.getElementById("envelope-overlay");
       const content = document.getElementById("main-content");
-
       let x = window.innerWidth / 2;
       let y = window.innerHeight / 2;
       if(evt && evt.touches && evt.touches.length){
-        x = evt.touches[0].clientX;
-        y = evt.touches[0].clientY;
+        x = evt.touches[0].clientX; y = evt.touches[0].clientY;
       } else if(evt && typeof evt.clientX === "number"){
-        x = evt.clientX;
-        y = evt.clientY;
+        x = evt.clientX; y = evt.clientY;
       }
-
       createFloatingHearts(x, y);
       overlay.classList.add("hidden-overlay");
       setTimeout(() => {
@@ -706,7 +728,13 @@
         .then(() => {
           form.style.display = "none";
           document.getElementById('successMessage').style.display = "block";
-          setTimeout(() => { document.getElementById("end-overlay").classList.add("show"); document.body.style.overflow = "hidden"; }, 1200);
+          setTimeout(() => { 
+            const endOverlay = document.getElementById("end-overlay");
+            const video = document.getElementById("endVideo");
+            endOverlay.classList.add("show"); 
+            document.body.style.overflow = "hidden"; 
+            if(video) { video.play().catch(e => console.log("Autoplay blocked")); }
+          }, 1200);
         }).catch(() => { btn.disabled = false; btn.innerHTML = "Try Again"; alert("Error!"); });
     });
 
