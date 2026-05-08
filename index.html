@@ -596,15 +596,25 @@
     // Replace with your own Google Apps Script URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
 
-    function setupPersonalizedRSVP() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const guestName = urlParams.get('name');
-        if(guestName) {
-            document.getElementById('fullName').value = guestName.replace(/_/g, ' ');
-        }
-        const maxGuests = parseInt(urlParams.get('max')) || 7; 
-        const guestSelect = document.getElementById('guests');
-        guestSelect.innerHTML = "";
+   function setupPersonalizedRSVP() {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // 1. Get the name and clean it up
+    const guestName = urlParams.get('name');
+    const nameInput = document.getElementById('fullName');
+    if(guestName && nameInput) {
+        // Replaces underscores back to spaces for the display
+        nameInput.value = guestName.replace(/_/g, ' ');
+    }
+
+    // 2. Get the max guests (Default to 1 if not specified)
+    const maxParam = urlParams.get('max');
+    const maxGuests = parseInt(maxParam) || 1; 
+    const guestSelect = document.getElementById('guests');
+    
+    if(guestSelect) {
+        guestSelect.innerHTML = ""; // Clear existing dummy options
+        
         for (let i = 1; i <= maxGuests; i++) {
             const opt = document.createElement('option');
             opt.value = i;
@@ -612,6 +622,7 @@
             guestSelect.appendChild(opt);
         }
     }
+}
 
     function createFloatingHearts(x, y){
       const container = document.getElementById("floatingHearts");
