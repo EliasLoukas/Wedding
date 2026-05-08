@@ -599,21 +599,15 @@
    function setupPersonalizedRSVP() {
     const urlParams = new URLSearchParams(window.location.search);
     
-    // 1. Get the name and clean it up
-    const guestName = urlParams.get('name');
-    const nameInput = document.getElementById('fullName');
-    if(guestName && nameInput) {
-        // Replaces underscores back to spaces for the display
-        nameInput.value = guestName.replace(/_/g, ' ');
-    }
-
-    // 2. Get the max guests (Default to 1 if not specified)
+    // 1. Handle Max Guests
+    // We look for ?max= in the URL. If it's missing, we default to 1.
     const maxParam = urlParams.get('max');
     const maxGuests = parseInt(maxParam) || 1; 
+    
     const guestSelect = document.getElementById('guests');
     
     if(guestSelect) {
-        guestSelect.innerHTML = ""; // Clear existing dummy options
+        guestSelect.innerHTML = ""; // Clear any default options
         
         for (let i = 1; i <= maxGuests; i++) {
             const opt = document.createElement('option');
@@ -621,6 +615,13 @@
             opt.textContent = i === 1 ? "1 Person" : `${i} People`;
             guestSelect.appendChild(opt);
         }
+    }
+
+    // 2. Clear the name field (Optional)
+    // This ensures the name field is empty for them to type in.
+    const nameInput = document.getElementById('fullName');
+    if(nameInput && !urlParams.has('name')) {
+        nameInput.value = ""; 
     }
 }
 
