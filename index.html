@@ -31,7 +31,6 @@
       min-height:100vh;
     }
 
-    /* FULLSCREEN BACKGROUND PHOTO */
     .bg{
       position:fixed;
       inset:0;
@@ -51,7 +50,6 @@
       backdrop-filter: blur(2px);
     }
 
-    /* Floating tiny hearts */
     .floating-hearts{
       position: fixed;
       inset: 0;
@@ -73,7 +71,6 @@
       100%{ transform: translate(var(--x), var(--y)) scale(1.2); opacity:0; }
     }
 
-    /* Overlay (OPEN) */
     #envelope-overlay{
       position:fixed;
       inset:0;
@@ -124,7 +121,6 @@
       text-shadow: 0 10px 24px rgba(197,160,89,0.10);
     }
 
-    /* Heart seal */
     .wax-seal-heart{
       width: 170px;
       height: 170px;
@@ -156,7 +152,6 @@
     }
     .seal-hint b{ color: var(--gold); }
 
-    /* Main content */
     .content{
       position:relative;
       z-index:1;
@@ -221,7 +216,6 @@
       background: linear-gradient(90deg, transparent, rgba(197,160,89,0.65), transparent);
     }
 
-    /* Countdown */
     .countdown{
       position:relative;
       display:flex;
@@ -253,7 +247,6 @@
       margin-top: 4px;
     }
 
-    /* Cards */
     .grid{
       margin-top: 14px;
       display:grid;
@@ -277,7 +270,6 @@
     .card p{ margin: 6px 0 0; color:#444; font-size: 1.05rem; line-height: 1.45; }
     .meta{ color:#666; font-size: .98rem; margin-top: 8px; }
 
-    /* Action pills */
     .actions{
       display:flex;
       gap:10px;
@@ -302,7 +294,6 @@
     }
     .action-btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
 
-    /* Gift registry */
     .gift{
       margin-top: 14px;
       background: var(--card);
@@ -321,7 +312,6 @@
     .gift .line{ margin:0; color:#444; font-size: 1.05rem; line-height: 1.5; }
     .gift .num{ font-weight:700; letter-spacing:.4px; }
 
-    /* RSVP */
     .rsvp{
       margin-top: 14px;
       background: var(--card);
@@ -384,6 +374,7 @@
       font-size: .95rem;
     }
 
+    /* END OVERLAY & ENVELOPE VIDEO FIXES */
     #end-overlay{
       position: fixed;
       inset: 0;
@@ -391,26 +382,23 @@
       justify-content:center;
       align-items:center;
       z-index: 10000;
-      background: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.4);
       backdrop-filter: blur(8px);
       opacity: 0;
       transition: opacity .6s ease;
       padding: 18px;
     }
-    #end-overlay.show{
-      display:flex;
-      opacity: 1;
-    }
+    #end-overlay.show{ display:flex; opacity: 1; }
+
     .end-card{
       width: min(520px, 92vw);
       border-radius: 28px;
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.9);
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
-      padding: 22px 18px 22px;
+      padding: 26px 18px;
       text-align:center;
       position:relative;
-      overflow:hidden;
     }
     .end-msg{
       margin: 0 0 12px;
@@ -419,20 +407,25 @@
       font-weight: 600;
     }
 
-    /* Video Specific Styles */
+    .envelope{
+      width: min(400px, 92%);
+      margin: 100px auto 0;
+      position: relative;
+      height: 220px;
+    }
+
     .video-wrapper {
       position: absolute;
       left: 50%;
-      top: 40px;
+      top: 0;
       transform: translateX(-50%);
-      width: 85%;
-      height: 160px;
-      z-index: 1;
+      width: 92%; /* Same size as envelope width */
+      height: 180px; /* Internal height */
+      z-index: 2; /* Between back and front */
       opacity: 0;
       background: #000;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     .video-wrapper video {
       width: 100%;
@@ -442,74 +435,56 @@
 
     #end-overlay.show .video-wrapper {
       opacity: 1;
-      animation: videoSlideOut 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      animation-delay: 0.8s;
+      animation: videoSlideUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation-delay: 0.9s;
     }
-    @keyframes videoSlideOut {
+    @keyframes videoSlideUp {
       from { transform: translateX(-50%) translateY(40px); }
-      to { transform: translateX(-50%) translateY(-70px); }
+      to { transform: translateX(-50%) translateY(-100px); }
     }
 
-    .envelope{
-      width: min(420px, 92%);
-      margin: 60px auto 0; /* Increased top margin for video space */
-      position: relative;
-      height: 240px;
-      animation: envelopeIn .7s ease-out both;
-    }
-    @keyframes envelopeIn{
-      from { transform: translateY(18px); opacity:0; }
-      to   { transform: translateY(0); opacity:1; }
-    }
     .env-back{
       position:absolute; inset: 40px 0 0 0;
-      background: rgba(255,255,255,0.9);
+      background: #fff;
       border: 1px solid rgba(197,160,89,0.22);
-      border-radius: 18px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      border-radius: 12px;
+      z-index: 1;
     }
     .env-front{
-      position:absolute; left:0; right:0; bottom:0; height: 150px;
-      background: rgba(255,255,255,0.95);
+      position:absolute; left:0; right:0; bottom:0; height: 140px;
+      background: #f9f9f9;
       border: 1px solid rgba(197,160,89,0.22);
-      border-radius: 0 0 18px 18px;
-      z-index: 3;
+      border-radius: 0 0 12px 12px;
+      z-index: 3; /* Front of envelope covers bottom of video */
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
     }
     .env-flap{
-      position:absolute; left:0; right:0; top:40px; height: 140px;
-      background: rgba(255,255,255,0.92);
+      position:absolute; left:0; right:0; top:40px; height: 120px;
+      background: #fff;
       border: 1px solid rgba(197,160,89,0.22);
       transform-origin: top center;
       clip-path: polygon(0 0, 100% 0, 50% 100%);
-      animation: flapClose .9s ease-in-out both;
-      animation-delay: .2s;
+      animation: flapOpenEnd .9s ease-in-out both;
+      animation-delay: 0.3s;
       z-index: 4;
     }
-    @keyframes flapClose{
-      0%   { transform: rotateX(180deg); }
-      100% { transform: rotateX(0deg); }
+    @keyframes flapOpenEnd{
+      0% { transform: rotateX(0deg); z-index: 4; }
+      100% { transform: rotateX(180deg); z-index: 1; }
     }
 
     .end-title-name{
       position:absolute;
       left:50%;
-      top: 120px;
+      bottom: 20px;
       transform: translateX(-50%);
       width: 90%;
       text-align:center;
-      opacity:0;
-      animation: endTitlePop .8s ease-out both;
-      animation-delay: .65s;
-      pointer-events:none;
       z-index: 5;
-    }
-    @keyframes endTitlePop{
-      from{ transform: translateX(-50%) translateY(6px) scale(0.98); opacity:0; }
-      to{ transform: translateX(-50%) translateY(0) scale(1); opacity:1; }
     }
     .end-title-name .overlay-title{
       margin: 0;
-      font-size: clamp(28px, 5vw, 44px);
+      font-size: 28px;
     }
   </style>
 </head>
@@ -556,17 +531,19 @@
     <div class="end-card">
       <p class="end-msg">We can’t wait to celebrate with you! ✨</p>
       <div class="envelope">
-        <div class="env-back">
-          <!-- The Video Placeholder -->
-          <div class="video-wrapper">
-            <video id="endVideo" playsinline muted loop>
-              <source src="your-video-file.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
+        <div class="env-back"></div>
+        
+        <!-- Video sits behind Front but in front of Back -->
+        <div class="video-wrapper">
+          <video id="endVideo" playsinline loop>
+            <source src="your-video-file.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
+
         <div class="env-flap"></div>
         <div class="env-front"></div>
+        
         <div class="end-title-name">
           <div class="overlay-title">Fouad & Lea</div>
         </div>
@@ -635,24 +612,24 @@
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
 
-  function setupPersonalizedRSVP() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const maxParam = urlParams.get('max');
-    const maxGuests = parseInt(maxParam) || 1; 
-    const guestSelect = document.getElementById('guests');
-    
-    if(guestSelect) {
-        guestSelect.innerHTML = "";
-        for (let i = 1; i <= maxGuests; i++) {
-            const opt = document.createElement('option');
-            opt.value = i;
-            opt.textContent = i === 1 ? "1 Person" : `${i} People`;
-            guestSelect.appendChild(opt);
-        }
+    function setupPersonalizedRSVP() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const maxParam = urlParams.get('max');
+      const maxGuests = parseInt(maxParam) || 1; 
+      const guestSelect = document.getElementById('guests');
+      if(guestSelect) {
+          guestSelect.innerHTML = "";
+          for (let i = 1; i <= maxGuests; i++) {
+              const opt = document.createElement('option');
+              opt.value = i;
+              opt.textContent = i === 1 ? "1 Person" : `${i} People`;
+              guestSelect.appendChild(opt);
+          }
+      }
+      const nameInput = document.getElementById('fullName');
+      if(nameInput) { nameInput.value = ""; }
     }
-    const nameInput = document.getElementById('fullName');
-    if(nameInput) { nameInput.value = ""; }
-}
+
     function createFloatingHearts(x, y){
       const container = document.getElementById("floatingHearts");
       for(let i=0;i<18;i++){
@@ -724,16 +701,29 @@
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       btn.disabled = true; btn.innerHTML = "Saving...";
+      
       fetch(scriptURL, { method:'POST', body:new FormData(form)})
         .then(() => {
           form.style.display = "none";
           document.getElementById('successMessage').style.display = "block";
+          
           setTimeout(() => { 
             const endOverlay = document.getElementById("end-overlay");
             const video = document.getElementById("endVideo");
+            
             endOverlay.classList.add("show"); 
             document.body.style.overflow = "hidden"; 
-            if(video) { video.play().catch(e => console.log("Autoplay blocked")); }
+
+            if(video) {
+              video.muted = false; // Enable sound
+              video.currentTime = 0;
+              // Play requires user interaction context, which we have from the 'submit' click
+              video.play().catch(err => {
+                console.log("Audio requires interaction. Retrying muted...");
+                video.muted = true;
+                video.play();
+              });
+            }
           }, 1200);
         }).catch(() => { btn.disabled = false; btn.innerHTML = "Try Again"; alert("Error!"); });
     });
