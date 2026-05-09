@@ -697,8 +697,20 @@
     }
 
     const form = document.getElementById('rsvpForm');
+    const video = document.getElementById("endVideo");
+
     form.addEventListener('submit', e => {
       e.preventDefault();
+      
+      // MOBILE FIX: Prepare the video as soon as the user clicks
+      // This "primes" the video so the browser allows sound later
+      if(video) {
+        video.muted = false;
+        video.play(); 
+        video.pause(); // We start and pause immediately to "unlock" audio
+        video.currentTime = 0;
+      }
+
       const btn = document.getElementById('submitBtn');
       btn.disabled = true; btn.innerHTML = "Saving...";
       
@@ -709,20 +721,21 @@
           
           setTimeout(() => { 
             const endOverlay = document.getElementById("end-overlay");
-            const video = document.getElementById("endVideo");
-            
             endOverlay.classList.add("show"); 
             document.body.style.overflow = "hidden"; 
 
             if(video) {
-              video.muted = false; // Enable sound
-              video.currentTime = 0;
-              // Play requires user interaction context, which we have from the 'submit' click
-              video.play().catch(err => {
-                console.log("Audio requires interaction. Retrying muted...");
-                video.muted = true;
-                video.play();
-              });
+              video.muted = false;
+              var playPromise = video.play();
+              
+              if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                  console.log("Still blocked. User must tap screen.");
+                  // Fallback: If still blocked, we try muted so it at least plays
+                  video.muted = true;
+                  video.play();
+                });
+              }
             }
           }, 1200);
         }).catch(() => { btn.disabled = false; btn.innerHTML = "Try Again"; alert("Error!"); });
