@@ -982,7 +982,12 @@
 
         <form id="rsvpForm" autocomplete="on">
           <input id="fullName" type="text" name="Name" placeholder="Full Name" required>
+ 
           <select id="guests" name="Guests"></select>
+
+          <input type="hidden" id="sideInput" name="Side">
+          <input type="hidden" id="maxAllowedInput" name="Max Allowed">
+
           <button type="submit" id="submitBtn">CONFIRM ATTENDANCE</button>
         </form>
 
@@ -997,27 +1002,39 @@
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
 
     function setupPersonalizedRSVP() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const maxParam = urlParams.get('max');
-      const maxGuests = parseInt(maxParam) || 1;
-      const guestSelect = document.getElementById('guests');
+    const urlParams = new URLSearchParams(window.location.search);
 
-      if(guestSelect) {
-        guestSelect.innerHTML = "";
+       const maxParam = urlParams.get('max');
+      const sideParam = urlParams.get('side');
 
-        for (let i = 1; i <= maxGuests; i++) {
-          const opt = document.createElement('option');
-          opt.value = i;
-          opt.textContent = i === 1 ? "1 Person" : `${i} People`;
-          guestSelect.appendChild(opt);
+    const maxGuests = parseInt(maxParam) || 1;
+
+    const guestSelect = document.getElementById('guests');
+      if (guestSelect) {
+         guestSelect.innerHTML = "";
+
+      for (let i = 1; i <= maxGuests; i++) {
+         const opt = document.createElement('option');
+         opt.value = i;
+        opt.textContent = i === 1 ? "1 Person" : `${i} People`;
+        guestSelect.appendChild(opt);
+       }
+      }
+
+     const sideInput = document.getElementById('sideInput');
+      if (sideInput) {
+         sideInput.value = sideParam || "General";
+      }
+
+      const maxAllowedInput = document.getElementById('maxAllowedInput');
+       if (maxAllowedInput) {
+          maxAllowedInput.value = maxGuests;
         }
-      }
 
-      const nameInput = document.getElementById('fullName');
-
-      if(nameInput) {
-        nameInput.value = "";
-      }
+       const nameInput = document.getElementById('fullName');
+        if (nameInput) {
+           nameInput.value = "";
+        }
     }
 
     function createFloatingHearts(x, y){
