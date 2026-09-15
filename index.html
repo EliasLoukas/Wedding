@@ -546,6 +546,27 @@
       font-weight:600;
     }
 
+    .music-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9997;
+  font-size: 18px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease;
+}
+.music-toggle:active { transform: scale(0.92); }
+
     .envelope{
       width:min(380px,94%);
       margin:90px auto 0;
@@ -649,6 +670,14 @@
 </head>
 
 <body>
+  <!-- Floating Music Toggle (top-right corner) -->
+<button id="musicToggle" class="music-toggle" aria-label="Toggle background music">
+  <span id="musicIcon">🎵</span>
+</button>
+
+<audio id="bgMusic" loop preload="none">
+  <source src="romantic-acoustic.mp3" type="audio/mp3">
+</audio>
   <div class="bg" aria-hidden="true"></div>
   <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
@@ -841,24 +870,46 @@
 
     let opened = false;
 
-    function openInvite(evt){
-      if(opened) return;
-      opened = true;
-      setupPersonalizedRSVP();
+function openInvite(evt){
+  if(opened) return;
+  opened = true;
+  setupPersonalizedRSVP();
 
-      const overlay = document.getElementById("envelope-overlay");
-      const content = document.getElementById("main-content");
+  const overlay = document.getElementById("envelope-overlay");
+  const content = document.getElementById("main-content");
+  const musicBtn = document.getElementById("musicToggle");
+  const music = document.getElementById("bgMusic");
 
-      let x = window.innerWidth / 2;
-      let y = window.innerHeight / 2;
+  // Start music and reveal the mute/unmute button
+  if (music) {
+    music.play().then(() => {
+      if (musicBtn) musicBtn.style.display = "flex";
+    }).catch(err => {
+      console.log("Audio waiting for user interaction:", err);
+      if (musicBtn) musicBtn.style.display = "flex";
+    });
+  }
 
-      if(evt && evt.touches && evt.touches.length){
-        x = evt.touches[0].clientX;
-        y = evt.touches[0].clientY;
-      } else if(evt && typeof evt.clientX === "number"){
-        x = evt.clientX;
-        y = evt.clientY;
-      }
+  let x = window.innerWidth / 2;
+  let y = window.innerHeight / 2;
+
+  if(evt && evt.touches && evt.touches.length){
+    x = evt.touches[0].clientX;
+    y = evt.touches[0].clientY;
+  } else if(evt && typeof evt.clientX === "number"){
+    x = evt.clientX;
+    y = evt.clientY;
+  }
+
+  createFloatingHearts(x, y);
+  overlay.classList.add("hidden-overlay");
+
+  setTimeout(() => {
+    content.classList.add("show-content");
+    overlay.style.display = "none";
+    revealOnScroll();
+  }, 750);
+}
 
       createFloatingHearts(x, y);
       overlay.classList.add("hidden-overlay");
