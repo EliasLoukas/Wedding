@@ -71,7 +71,7 @@
       background:rgba(255,255,255,0.85);
       border:1px solid var(--border);
       box-shadow:0 6px 18px rgba(0,0,0,0.12);
-      display:none; /* Shown once opened */
+      display:none;
       align-items:center;
       justify-content:center;
       cursor:pointer;
@@ -395,7 +395,6 @@
       margin-top:8px;
     }
 
-    /* Elegant Day Schedule Timeline */
     .timeline{
       margin-top:16px;
       position:relative;
@@ -562,7 +561,6 @@
       font-size:.95rem;
     }
 
-    /* Modern Toast Popup */
     .toast{
       position:fixed;
       bottom:28px;
@@ -748,7 +746,7 @@
   <div class="bg" aria-hidden="true"></div>
   <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
-  <!-- Background Music Audio & Floating Toggle -->
+  <!-- Audio: Ensure you have romantic-music.mp3 or change this filename -->
   <audio id="bgMusic" loop preload="auto">
     <source src="romantic-music.mp3" type="audio/mp3">
   </audio>
@@ -796,8 +794,8 @@
         <div class="env-back"></div>
 
         <div class="video-wrapper">
-          <video id="endVideo" playsinline controls loop preload="auto">
-            <source src="your-video-file.mp4" type="video/mp4">
+          <!-- Update src to your actual video file -->
+          <video id="endVideo" src="your-video-file.mp4" playsinline controls loop preload="auto">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -842,22 +840,22 @@
         <!-- Ceremony -->
         <div class="card reveal-on-scroll">
           <h3>Ceremony</h3>
-          <p><strong>Notre Dame des Dons</strong></p>
+          <p><strong>⛪ Notre Dame des Dons | مطرانية ادما</strong></p>
           <div class="meta">Sunday • 01/11/2026 • 5:00 PM</div>
           <div class="actions">
             <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFyy75vBijbQ1hvY7?g_st=ic">📍 Open in Maps</a>
             <a class="action-btn" href="#" onclick="addToGoogleCalendar(event)">🗓️ Google Cal</a>
-            <a class="action-btn" href="#" onclick="downloadAppleCalendar(event)">🍏 Apple Cal</a>
+            <a class="action-btn" href="#" onclick="downloadAppleCalendar(event)">🗓️ Apple Cal</a>
           </div>
         </div>
 
         <!-- Reception -->
         <div class="card reveal-on-scroll">
           <h3>Reception</h3>
-          <p><strong>Atlal Plaza</strong></p>
-          <div class="meta">Dinner and Celebration to follow</div>
+          <p><strong>Orizon Byblos</strong></p>
+          <div class="meta">7:00 PM • Dinner and Celebration to follow</div>
           <div class="actions">
-            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ENTtKWAsiehHiY89A?g_st=ic">📍 Open in Maps</a>
+            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/nzMjvDL9ED4fcZ557?g_st=ic">📍 Open in Maps</a>
           </div>
         </div>
 
@@ -870,18 +868,18 @@
               <div class="t-desc"><strong>Church Ceremony</strong><br>Notre Dame des Dons</div>
             </div>
             <div class="timeline-item">
-              <div class="t-time">7:30 PM</div>
-              <div class="t-desc"><strong>Welcome Drinks & Reception</strong><br>Atlal Plaza</div>
+              <div class="t-time">7:00 PM</div>
+              <div class="t-desc"><strong>Welcome Drinks & Reception</strong><br>Orizon Byblos</div>
             </div>
             <div class="timeline-item">
-              <div class="t-time">9:00 PM</div>
+              <div class="t-time">7:30 PM</div>
               <div class="t-desc"><strong>Dinner & Party</strong><br>Celebrating with Fouad & Lea</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Gift Registry -->
+      <!-- Gift Registry (FIXED MISMATCHES HERE) -->
       <div class="gift reveal-on-scroll" id="gift">
         <h3>Gift Registry</h3>
         <p class="line">If you wish to celebrate us with a gift, you may do so via <strong>Whish Money</strong>:</p>
@@ -891,8 +889,8 @@
           <button class="copy-chip" onclick="copyText('+96171057982', 'Phone number copied!')">📋 Copy Phone</button>
         </div>
         <div class="gift-row">
-          <span>Account ID: <strong>20361932-03</strong></span>
-          <button class="copy-chip" onclick="copyText('20361932-03', 'Whish Account ID copied!')">📋 Copy ID</button>
+          <span>Account ID: <strong>20747766-03</strong></span>
+          <button class="copy-chip" onclick="copyText('20747766-03', 'Whish Account ID copied!')">📋 Copy ID</button>
         </div>
       </div>
 
@@ -982,7 +980,6 @@
       const musicBtn = document.getElementById("musicToggle");
       const music = document.getElementById("bgMusic");
 
-      // Play romantic music on user gesture
       if (music) {
         music.play().then(() => {
           musicBtn.style.display = "flex";
@@ -1037,7 +1034,6 @@
 
     window.addEventListener("scroll", revealOnScroll, { passive:true });
 
-    // Exact UTC+2 ISO for Lebanon winter standard time
     const weddingDate = new Date("2026-11-01T17:00:00+02:00").getTime();
 
     function updateTimer(){
@@ -1059,7 +1055,6 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // Google Calendar
     function addToGoogleCalendar(e){
       e.preventDefault();
       const title = "Fouad & Lea Wedding";
@@ -1074,7 +1069,6 @@
       );
     }
 
-    // Apple & Outlook Calendar (.ics)
     function downloadAppleCalendar(e){
       e.preventDefault();
       const icsData = 
@@ -1104,7 +1098,6 @@ END:VCALENDAR`;
       document.body.removeChild(link);
     }
 
-    // Toast Copier
     function copyText(text, msg) {
       navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById("toast");
