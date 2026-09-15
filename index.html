@@ -41,7 +41,7 @@
     .bg{
       position:fixed;
       inset:0;
-      background-image:url("fouad-lea.jpg"); /* Replace with your bride & groom photo */
+      background-image:url("elias.jpeg"); /* Updated background image */
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
@@ -394,6 +394,42 @@
       box-shadow:0 10px 18px rgba(0,0,0,0.06);
       transition:transform .15s ease, filter .2s ease;
       cursor:pointer;
+    }
+
+    /* Timeline Section Styles */
+    .timeline {
+      margin-top: 14px;
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid rgba(197, 160, 89, 0.35);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-item:before {
+      content: "";
+      position: absolute;
+      left: -26px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid #fff;
+    }
+    .t-time {
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+    .t-desc {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.35;
     }
 
     .gift{
@@ -765,20 +801,40 @@
       <div class="grid">
         <div class="card reveal-on-scroll">
           <h3>Ceremony</h3>
-          <p><strong>Notre Dame des Dons</strong></p>
+          <p><strong> ⛪ Notre Dame des Dons | مطرانية ادما  </strong></p>
           <div class="meta">Sunday • 01/11/2026 • 5:00 PM</div>
           <div class="actions">
-            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFyy75vBijbQ1hvY7?g_st=ic">📍 Open in Maps</a>
-            <a class="action-btn" href="#" onclick="addToCalendar(event)">🗓️ Add to Calendar</a>
+            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFyy75vBijbQ1hvY7?g_st=ic">📍 Open Maps</a>
+            <a class="action-btn" href="#" onclick="addToCalendar(event)">🗓️ Google Cal</a>
+            <a class="action-btn" href="#" onclick="downloadIcsCalendar(event)"> 🗓️ Apple Cal</a>
           </div>
         </div>
 
         <div class="card reveal-on-scroll">
           <h3>Reception</h3>
-          <p><strong>Atlal Plaza</strong></p>
+          <p><strong>Orizon Byblos</strong></p>
           <div class="meta">Dinner and Celebration to follow</div>
           <div class="actions">
-            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ENTtKWAsiehHiY89A?g_st=ic">📍 Open in Maps</a>
+            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/nzMjvDL9ED4fcZ557?g_st=ic">📍 Open in Maps</a>
+          </div>
+        </div>
+
+        <!-- Day Schedule / Timeline Card -->
+        <div class="card timeline-card reveal-on-scroll">
+          <h3>Day Schedule</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="t-time">5:00 PM</div>
+              <div class="t-desc"><strong>Church Ceremony</strong><br>Notre Dame des Dons</div>
+            </div>
+            <div class="timeline-item">
+              <div class="t-time">7:00 PM</div>
+              <div class="t-desc"><strong>Welcome Drinks & Reception</strong><br>Orizon Byblos</div>
+            </div>
+            <div class="timeline-item">
+              <div class="t-time">7:30 PM</div>
+              <div class="t-desc"><strong>Dinner & Celebration</strong><br>Dancing the night away</div>
+            </div>
           </div>
         </div>
       </div>
@@ -788,12 +844,12 @@
         <p class="line">If you wish to celebrate us with a gift, you may do so via <strong>Whish Money</strong>:</p>
         
         <div class="gift-row">
-          <span>Phone: <strong>+961 71057982</strong></span>
-          <button class="copy-chip" onclick="copyText('+96171057982', 'Phone number copied!')">📋 Copy Phone</button>
+          <span>Phone: <strong>+961 76656373</strong></span>
+          <button class="copy-chip" onclick="copyText('+96176656373', 'Phone number copied!')">📋 Copy Phone</button>
         </div>
         <div class="gift-row">
-          <span>Account ID: <strong>20361932-03</strong></span>
-          <button class="copy-chip" onclick="copyText('20361932-03', 'Whish ID copied!')">📋 Copy ID</button>
+          <span>Account ID: <strong>20747766-03</strong></span>
+          <button class="copy-chip" onclick="copyText('20747766-03', 'Whish ID copied!')">📋 Copy ID</button>
         </div>
       </div>
 
@@ -975,6 +1031,32 @@
         `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&location=${encodeURIComponent(loc)}&dates=${start}/${end}&details=${encodeURIComponent(details)}&ctz=Asia/Beirut`,
         "_blank"
       );
+    }
+
+    function downloadIcsCalendar(e) {
+      e.preventDefault();
+      const icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fouad & Lea Wedding//EN
+BEGIN:VEVENT
+UID:wedding-fouad-lea-2026@wedding.com
+DTSTAMP:20260901T120000Z
+DTSTART:20261101T150000Z
+DTEND:20261101T230000Z
+SUMMARY:Fouad & Lea's Wedding
+DESCRIPTION:We can't wait to celebrate our wedding with you!
+LOCATION:Notre Dame des Dons, Lebanon
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'fouad-and-lea-wedding.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
     function copyText(text, msg) {
