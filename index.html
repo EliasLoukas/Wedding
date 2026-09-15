@@ -1087,8 +1087,9 @@ END:VCALENDAR`;
       btn.innerHTML = "Saving...";
 
       fetch(scriptURL, {
-        method:'POST',
-        body:new FormData(form)
+        method: 'POST',
+        mode: 'no-cors',
+        body: new FormData(form)
       })
       .then(() => {
         form.style.display = "none";
