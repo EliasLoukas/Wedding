@@ -638,7 +638,7 @@
 
     @keyframes videoSlideUp{
       from{transform:translateX(-50%) translateY(40px);}
-      to{transform:translateX(-50%) translateY(-100px);}
+      to{transform:translateX(-50%) translateY(calc(-100px + 2cm));}
     }
 
     .env-back{
@@ -1093,14 +1093,11 @@ END:VCALENDAR`;
         video.muted = false;
         video.volume = 1.0;
         video.currentTime = 0;
-        // Briefly attempt play/pause to capture gesture permission on iOS/Safari
         const primePromise = video.play();
         if (primePromise !== undefined) {
           primePromise.then(() => {
             video.pause();
-          }).catch(() => {
-            // If strictly blocked, fallback will trigger later
-          });
+          }).catch(() => {});
         }
       }
 
@@ -1123,7 +1120,7 @@ END:VCALENDAR`;
           document.body.style.overflow = "hidden";
 
           if(video) {
-            video.muted = false; // Ensure unmuted when showing
+            video.muted = false;
             const playPromise = video.play();
             if (playPromise !== undefined) {
               playPromise.catch(err => {
