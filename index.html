@@ -1082,6 +1082,11 @@ END:VCALENDAR`;
     form.addEventListener('submit', e => {
       e.preventDefault();
 
+      if (music) {
+        music.pause();
+        if (musicIcon) musicIcon.textContent = "🔇";
+      }
+
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.innerHTML = "Saving...";
