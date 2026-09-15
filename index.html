@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fouad & Lea Wedding</title>
 
-  <!-- Open Graph Meta Tags for WhatsApp & Social Sharing -->
+  <!-- Open Graph for WhatsApp & Social Media Preview -->
   <meta property="og:title" content="Fouad & Lea — Wedding Invitation" />
-  <meta property="og:description" content="Join us in celebrating our wedding on Sunday, November 1, 2026." />
-  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:description" content="Join us to celebrate our wedding on Sunday, November 1, 2026 at Notre Dame des Dons." />
+  <meta property="og:image" content="fouad-lea-preview.jpg" />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
       --text:#2f2f2f;
       --muted:#6f6f6f;
       --shadow:0 16px 46px rgba(0,0,0,0.18);
-      --card:rgba(255,255,255,0.84);
+      --card:rgba(255,255,255,0.82);
       --border:rgba(197,160,89,0.26);
       --radius:26px;
     }
@@ -41,7 +41,7 @@
     .bg{
       position:fixed;
       inset:0;
-      background-image:url("fouad-lea.jpg");
+      background-image:url("fouad-lea.jpg"); /* Replace with your bride & groom photo */
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
@@ -59,29 +59,6 @@
       backdrop-filter:blur(3px);
       -webkit-backdrop-filter:blur(3px);
     }
-
-    /* Floating Music Toggle */
-    .music-toggle{
-      position:fixed;
-      top:18px;
-      right:18px;
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.85);
-      border:1px solid var(--border);
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      z-index:9997;
-      font-size:18px;
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
-      transition:transform .2s ease;
-    }
-    .music-toggle:active{ transform:scale(0.92); }
 
     .floating-hearts{
       position:fixed;
@@ -395,45 +372,6 @@
       margin-top:8px;
     }
 
-    .timeline{
-      margin-top:16px;
-      position:relative;
-      padding-left:22px;
-      border-left:2px solid rgba(197,160,89,0.35);
-    }
-
-    .timeline-item{
-      position:relative;
-      margin-bottom:18px;
-    }
-
-    .timeline-item:last-child{ margin-bottom:4px; }
-
-    .timeline-item:before{
-      content:"";
-      position:absolute;
-      left:-28px;
-      top:4px;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--gold);
-      border:2px solid #fff;
-    }
-
-    .t-time{
-      font-weight:700;
-      color:var(--gold);
-      font-size:.98rem;
-    }
-
-    .t-desc{
-      color:#4f4f4f;
-      font-size:.96rem;
-      line-height:1.4;
-      margin-top:2px;
-    }
-
     .actions{
       display:flex;
       gap:10px;
@@ -458,10 +396,6 @@
       cursor:pointer;
     }
 
-    .action-btn:hover{
-      transform:translateY(-2px);
-    }
-
     .gift{
       margin-top:14px;
       padding:18px;
@@ -474,26 +408,20 @@
       justify-content:space-between;
       flex-wrap:wrap;
       gap:8px;
-      margin-top:10px;
-      padding:8px 0;
-      border-bottom:1px dashed rgba(197,160,89,0.25);
+      margin-top:8px;
     }
-
-    .gift-row:last-child{ border-bottom:none; }
 
     .copy-chip{
       display:inline-flex;
       align-items:center;
       gap:6px;
       font-size:.84rem;
-      padding:6px 14px;
+      padding:6px 12px;
       background:#fff;
       border:1px solid var(--border);
       border-radius:999px;
       cursor:pointer;
       color:#555;
-      font-family:inherit;
-      transition:background .2s, color .2s;
     }
 
     .copy-chip:hover{
@@ -561,28 +489,6 @@
       font-size:.95rem;
     }
 
-    .toast{
-      position:fixed;
-      bottom:28px;
-      left:50%;
-      transform:translateX(-50%) translateY(60px);
-      background:rgba(30,30,30,0.92);
-      color:#fff;
-      padding:10px 22px;
-      border-radius:999px;
-      font-size:.92rem;
-      opacity:0;
-      pointer-events:none;
-      transition:all .35s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-      z-index:10005;
-      box-shadow:0 10px 25px rgba(0,0,0,0.25);
-    }
-
-    .toast.show{
-      opacity:1;
-      transform:translateX(-50%) translateY(0);
-    }
-
     #end-overlay{
       position:fixed;
       inset:0;
@@ -609,15 +515,15 @@
       background:rgba(255,255,255,0.95);
       box-shadow:var(--shadow);
       border:1px solid var(--border);
-      padding:32px 18px 24px;
+      padding:30px 18px 24px;
       text-align:center;
       position:relative;
     }
 
     .close-overlay-btn{
       position:absolute;
-      top:14px;
-      right:16px;
+      top:12px;
+      right:14px;
       width:32px;
       height:32px;
       background:rgba(0,0,0,0.06);
@@ -746,21 +652,12 @@
   <div class="bg" aria-hidden="true"></div>
   <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
-  <!-- Audio: Ensure you have romantic-music.mp3 or change this filename -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="romantic-music.mp3" type="audio/mp3">
-  </audio>
-
-  <button id="musicToggle" class="music-toggle" onclick="toggleMusic()" aria-label="Toggle background music">
-    <span id="musicIcon">🎵</span>
-  </button>
-
-  <!-- Envelope Opening Overlay -->
+  <!-- Initial Envelope Overlay -->
   <div id="envelope-overlay">
     <div class="overlay-card">
       <div class="topline">Save The Date</div>
       <div class="overlay-title">Fouad & Lea</div>
-      <p class="overlay-subtitle">Tap the heart to open the invitation</p>
+      <p class="overlay-subtitle">Tap the heart to reveal the invitation</p>
 
       <div class="wax-seal-heart" onclick="openInvite(event)" ontouchstart="openInvite(event)" role="button" aria-label="Open Fouad and Lea invitation">
         <svg viewBox="0 0 220 220" width="145" height="145" aria-hidden="true">
@@ -794,8 +691,8 @@
         <div class="env-back"></div>
 
         <div class="video-wrapper">
-          <!-- Update src to your actual video file -->
-          <video id="endVideo" src="your-video-file.mp4" playsinline controls loop preload="auto">
+          <video id="endVideo" playsinline controls loop preload="auto">
+            <source src="your-video-file.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -837,49 +734,26 @@
       </div>
 
       <div class="grid">
-        <!-- Ceremony -->
         <div class="card reveal-on-scroll">
           <h3>Ceremony</h3>
-          <p><strong>⛪ Notre Dame des Dons | مطرانية ادما</strong></p>
+          <p><strong>Notre Dame des Dons</strong></p>
           <div class="meta">Sunday • 01/11/2026 • 5:00 PM</div>
           <div class="actions">
             <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFyy75vBijbQ1hvY7?g_st=ic">📍 Open in Maps</a>
-            <a class="action-btn" href="#" onclick="addToGoogleCalendar(event)">🗓️ Google Cal</a>
-            <a class="action-btn" href="#" onclick="downloadAppleCalendar(event)">🗓️ Apple Cal</a>
+            <a class="action-btn" href="#" onclick="addToCalendar(event)">🗓️ Add to Calendar</a>
           </div>
         </div>
 
-        <!-- Reception -->
         <div class="card reveal-on-scroll">
           <h3>Reception</h3>
-          <p><strong>Orizon Byblos</strong></p>
-          <div class="meta">7:00 PM • Dinner and Celebration to follow</div>
+          <p><strong>Atlal Plaza</strong></p>
+          <div class="meta">Dinner and Celebration to follow</div>
           <div class="actions">
-            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/nzMjvDL9ED4fcZ557?g_st=ic">📍 Open in Maps</a>
-          </div>
-        </div>
-
-        <!-- Schedule / Timeline -->
-        <div class="card reveal-on-scroll">
-          <h3>Day Schedule</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="t-time">5:00 PM</div>
-              <div class="t-desc"><strong>Church Ceremony</strong><br>Notre Dame des Dons</div>
-            </div>
-            <div class="timeline-item">
-              <div class="t-time">7:00 PM</div>
-              <div class="t-desc"><strong>Welcome Drinks & Reception</strong><br>Orizon Byblos</div>
-            </div>
-            <div class="timeline-item">
-              <div class="t-time">7:30 PM</div>
-              <div class="t-desc"><strong>Dinner & Party</strong><br>Celebrating with Fouad & Lea</div>
-            </div>
+            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ENTtKWAsiehHiY89A?g_st=ic">📍 Open in Maps</a>
           </div>
         </div>
       </div>
 
-      <!-- Gift Registry (FIXED MISMATCHES HERE) -->
       <div class="gift reveal-on-scroll" id="gift">
         <h3>Gift Registry</h3>
         <p class="line">If you wish to celebrate us with a gift, you may do so via <strong>Whish Money</strong>:</p>
@@ -889,12 +763,11 @@
           <button class="copy-chip" onclick="copyText('+96171057982', 'Phone number copied!')">📋 Copy Phone</button>
         </div>
         <div class="gift-row">
-          <span>Account ID: <strong>20747766-03</strong></span>
-          <button class="copy-chip" onclick="copyText('20747766-03', 'Whish Account ID copied!')">📋 Copy ID</button>
+          <span>Account ID: <strong>20361932-03</strong></span>
+          <button class="copy-chip" onclick="copyText('20361932-03', 'Whish ID copied!')">📋 Copy ID</button>
         </div>
       </div>
 
-      <!-- RSVP Form -->
       <div class="rsvp reveal-on-scroll">
         <h3 class="rsvp-title">RSVP</h3>
         <p class="rsvp-sub">Kindly confirm your attendance 💛</p>
@@ -916,8 +789,6 @@
       <div class="footer-note">With love • Fouad & Lea</div>
     </div>
   </div>
-
-  <div id="toast" class="toast">Copied to clipboard!</div>
 
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyFW74RzIz_TZGMtAzzcWq6umbdZWFwVakmiyIgmoaLeXw7NNvyGvs4-PydCHrjSDdR/exec';
@@ -977,17 +848,6 @@
 
       const overlay = document.getElementById("envelope-overlay");
       const content = document.getElementById("main-content");
-      const musicBtn = document.getElementById("musicToggle");
-      const music = document.getElementById("bgMusic");
-
-      if (music) {
-        music.play().then(() => {
-          musicBtn.style.display = "flex";
-        }).catch(err => {
-          console.log("Audio autoplay waiting for user interaction:", err);
-          musicBtn.style.display = "flex";
-        });
-      }
 
       let x = window.innerWidth / 2;
       let y = window.innerHeight / 2;
@@ -1010,18 +870,6 @@
       }, 750);
     }
 
-    function toggleMusic(){
-      const music = document.getElementById("bgMusic");
-      const icon = document.getElementById("musicIcon");
-      if(music.paused){
-        music.play();
-        icon.textContent = "🎵";
-      } else {
-        music.pause();
-        icon.textContent = "🔇";
-      }
-    }
-
     function revealOnScroll(){
       const els = document.querySelectorAll(".reveal-on-scroll");
       els.forEach(el => {
@@ -1034,6 +882,7 @@
 
     window.addEventListener("scroll", revealOnScroll, { passive:true });
 
+    // Explicit timezone ISO string (+02:00 for Lebanon Winter Time)
     const weddingDate = new Date("2026-11-01T17:00:00+02:00").getTime();
 
     function updateTimer(){
@@ -1055,8 +904,9 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    function addToGoogleCalendar(e){
+    function addToCalendar(e){
       e.preventDefault();
+      // Exact UTC timestamps: 5:00 PM Beirut (UTC+2) = 15:00 UTC
       const title = "Fouad & Lea Wedding";
       const loc = "Notre Dame des Dons, Lebanon";
       const start = "20261101T150000Z";
@@ -1069,41 +919,9 @@
       );
     }
 
-    function downloadAppleCalendar(e){
-      e.preventDefault();
-      const icsData = 
-`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Fouad & Lea Wedding//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-BEGIN:VEVENT
-UID:wedding-fouad-lea-2026@wedding.com
-DTSTAMP:20260901T120000Z
-DTSTART:20261101T150000Z
-DTEND:20261101T230000Z
-SUMMARY:Fouad & Lea's Wedding
-DESCRIPTION:We can't wait to celebrate with you!
-LOCATION:Notre Dame des Dons, Lebanon
-STATUS:CONFIRMED
-END:VEVENT
-END:VCALENDAR`;
-
-      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'fouad-and-lea-wedding.ics');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
     function copyText(text, msg) {
       navigator.clipboard.writeText(text).then(() => {
-        const toast = document.getElementById("toast");
-        toast.textContent = msg;
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 2400);
+        alert(msg);
       }).catch(() => {
         prompt("Copy this:", text);
       });
@@ -1141,6 +959,7 @@ END:VCALENDAR`;
           document.body.style.overflow = "hidden";
 
           if(video) {
+            // Keep muted by default so mobile allows autoplay
             video.muted = true;
             video.play().catch(err => console.log("Autoplay blocked:", err));
           }
@@ -1149,10 +968,7 @@ END:VCALENDAR`;
       .catch(() => {
         btn.disabled = false;
         btn.innerHTML = "Try Again";
-        const toast = document.getElementById("toast");
-        toast.textContent = "Error submitting RSVP. Please try again.";
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 3000);
+        alert("Something went wrong while submitting. Please try again!");
       });
     });
 
