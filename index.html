@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fouad & Lea Wedding</title>
 
+  <!-- Open Graph for WhatsApp & Social Media Preview -->
+  <meta property="og:title" content="Fouad & Lea — Wedding Invitation" />
+  <meta property="og:description" content="Join us to celebrate our wedding on Sunday, November 1, 2026 at Notre Dame des Dons." />
+  <meta property="og:image" content="fouad-lea-preview.jpg" />
+  <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -16,7 +22,7 @@
       --text:#2f2f2f;
       --muted:#6f6f6f;
       --shadow:0 16px 46px rgba(0,0,0,0.18);
-      --card:rgba(255,255,255,0.80);
+      --card:rgba(255,255,255,0.82);
       --border:rgba(197,160,89,0.26);
       --radius:26px;
     }
@@ -27,7 +33,7 @@
       margin:0;
       font-family:"Cormorant Garamond", Georgia, serif;
       color:var(--text);
-      background:#000;
+      background:#0b0b0b;
       overflow-x:hidden;
       min-height:100vh;
     }
@@ -35,7 +41,7 @@
     .bg{
       position:fixed;
       inset:0;
-      background-image:url("elias.jpeg");
+      background-image:url("fouad-lea.jpg"); /* Replace with your bride & groom photo */
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
@@ -48,9 +54,10 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(900px 500px at 30% 20%, rgba(255,255,255,0.35), rgba(255,255,255,0.15) 55%, rgba(0,0,0,0.10)),
-        linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.10));
-      backdrop-filter:blur(2px);
+        radial-gradient(900px 500px at 30% 20%, rgba(255,255,255,0.35), rgba(255,255,255,0.15) 55%, rgba(0,0,0,0.15)),
+        linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.10));
+      backdrop-filter:blur(3px);
+      -webkit-backdrop-filter:blur(3px);
     }
 
     .floating-hearts{
@@ -94,18 +101,19 @@
     }
 
     .overlay-card{
-      width:min(500px,94vw);
+      width:min(480px,94vw);
       max-height:94vh;
       overflow-y:auto;
       border-radius:28px;
-      background:rgba(255,255,255,0.84);
+      background:rgba(255,255,255,0.85);
       box-shadow:var(--shadow);
       border:1px solid var(--border);
-      padding:28px 20px 30px;
+      padding:32px 20px;
       position:relative;
       z-index:2;
       text-align:center;
-      backdrop-filter:blur(8px);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
     }
 
     .topline{
@@ -124,29 +132,29 @@
     .topline:after{
       content:"";
       height:1px;
-      width:70px;
+      width:60px;
       background:linear-gradient(90deg,transparent,rgba(197,160,89,0.55),transparent);
     }
 
     .overlay-title{
       font-family:"Great Vibes", cursive;
-      font-size:clamp(38px,6vw,56px);
-      margin:6px 0 6px;
+      font-size:clamp(40px,7vw,60px);
+      margin:8px 0;
       color:var(--gold);
-      text-shadow:0 10px 24px rgba(197,160,89,0.10);
+      text-shadow:0 10px 24px rgba(197,160,89,0.15);
     }
 
     .overlay-subtitle{
       color:#666;
       font-size:1.05rem;
-      margin:0 0 18px;
-      letter-spacing:.4px;
+      margin:0 0 16px;
+      letter-spacing:.3px;
     }
 
     .wax-seal-heart{
-      width:150px;
-      height:150px;
-      margin:12px auto 6px;
+      width:145px;
+      height:145px;
+      margin:10px auto 4px;
       cursor:pointer;
       user-select:none;
       -webkit-tap-highlight-color:transparent;
@@ -200,6 +208,7 @@
       box-shadow:var(--shadow);
       padding:24px 14px 18px;
       backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
       position:relative;
       overflow:hidden;
       text-align:center;
@@ -243,20 +252,20 @@
 
     .groom-name{
       font-family:"Great Vibes", cursive;
-      font-size:clamp(44px,8vw,70px);
+      font-size:clamp(46px,8vw,70px);
       color:var(--gold);
     }
 
     .bride-name{
       font-family:"Great Vibes", cursive;
-      font-size:clamp(52px,9vw,82px);
+      font-size:clamp(54px,9vw,82px);
       color:var(--gold);
       text-shadow:0 8px 18px rgba(197,160,89,0.20);
     }
 
     .heart-symbol{
       color:#c9184a;
-      font-size:26px;
+      font-size:24px;
       transform:translateY(-4px);
     }
 
@@ -286,12 +295,12 @@
     }
 
     .time-box{
-      background:rgba(255,255,255,0.86);
+      background:rgba(255,255,255,0.88);
       border:1px solid rgba(197,160,89,0.20);
       padding:12px 12px 10px;
       border-radius:16px;
       min-width:78px;
-      box-shadow:0 10px 18px rgba(0,0,0,0.08);
+      box-shadow:0 10px 18px rgba(0,0,0,0.06);
     }
 
     .time-box span{
@@ -325,13 +334,14 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
       transform:translateY(12px);
       opacity:0;
       transition:transform .9s ease, opacity .9s ease;
     }
 
     .card{
-      padding:16px;
+      padding:18px;
       text-align:left;
     }
 
@@ -346,7 +356,7 @@
     .gift h3{
       margin:0 0 6px;
       color:var(--gold);
-      font-size:1.28rem;
+      font-size:1.32rem;
     }
 
     .card p{
@@ -366,7 +376,7 @@
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top:12px;
+      margin-top:14px;
     }
 
     .action-btn{
@@ -374,39 +384,54 @@
       align-items:center;
       justify-content:center;
       gap:8px;
-      padding:10px 12px;
+      padding:10px 16px;
       border-radius:999px;
       border:1px solid rgba(197,160,89,0.28);
-      background:rgba(255,255,255,0.86);
+      background:rgba(255,255,255,0.9);
       color:#4f4f4f;
       text-decoration:none;
       font-size:.96rem;
-      box-shadow:0 10px 18px rgba(0,0,0,0.08);
+      box-shadow:0 10px 18px rgba(0,0,0,0.06);
       transition:transform .15s ease, filter .2s ease;
       cursor:pointer;
     }
 
     .gift{
       margin-top:14px;
-      padding:18px 16px;
+      padding:18px;
       text-align:left;
     }
 
-    .gift .line{
-      margin:0;
-      color:#444;
-      font-size:1.05rem;
-      line-height:1.5;
+    .gift-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
     }
 
-    .gift .num{
-      font-weight:700;
-      letter-spacing:.4px;
+    .copy-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:.84rem;
+      padding:6px 12px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:999px;
+      cursor:pointer;
+      color:#555;
+    }
+
+    .copy-chip:hover{
+      background:var(--gold2);
+      color:#fff;
     }
 
     .rsvp{
       margin-top:14px;
-      padding:22px 16px;
+      padding:24px 18px;
     }
 
     .rsvp-title{
@@ -417,7 +442,7 @@
     }
 
     .rsvp-sub{
-      margin:0 0 10px;
+      margin:0 0 12px;
       color:#595959;
       font-size:.98rem;
       text-align:center;
@@ -425,19 +450,19 @@
 
     input,
     select,
-    button{
+    button.submit-btn{
       width:100%;
       padding:14px;
       margin:10px 0;
       border-radius:14px;
       border:1px solid rgba(0,0,0,0.10);
       font-size:16px;
-      background:rgba(255,255,255,0.92);
+      background:rgba(255,255,255,0.94);
       font-family:inherit;
       outline:none;
     }
 
-    button{
+    button.submit-btn{
       background:linear-gradient(135deg,var(--gold),var(--gold2));
       color:white;
       border:none;
@@ -458,9 +483,9 @@
 
     .footer-note{
       text-align:center;
-      margin-top:14px;
-      color:rgba(255,255,255,0.85);
-      text-shadow:0 12px 24px rgba(0,0,0,0.45);
+      margin-top:16px;
+      color:rgba(255,255,255,0.9);
+      text-shadow:0 12px 24px rgba(0,0,0,0.5);
       font-size:.95rem;
     }
 
@@ -471,8 +496,9 @@
       justify-content:center;
       align-items:center;
       z-index:10000;
-      background:rgba(255,255,255,0.4);
+      background:rgba(0,0,0,0.65);
       backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
       opacity:0;
       transition:opacity .6s ease;
       padding:18px;
@@ -484,26 +510,45 @@
     }
 
     .end-card{
-      width:min(520px,92vw);
+      width:min(500px,94vw);
       border-radius:28px;
-      background:rgba(255,255,255,0.9);
+      background:rgba(255,255,255,0.95);
       box-shadow:var(--shadow);
       border:1px solid var(--border);
-      padding:26px 18px;
+      padding:30px 18px 24px;
       text-align:center;
       position:relative;
     }
 
+    .close-overlay-btn{
+      position:absolute;
+      top:12px;
+      right:14px;
+      width:32px;
+      height:32px;
+      background:rgba(0,0,0,0.06);
+      border:none;
+      border-radius:50%;
+      font-size:20px;
+      line-height:1;
+      cursor:pointer;
+      color:#555;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:10;
+    }
+
     .end-msg{
-      margin:0 0 12px;
-      color:#5b5b5b;
-      font-size:1.06rem;
+      margin:0 0 10px;
+      color:#444;
+      font-size:1.1rem;
       font-weight:600;
     }
 
     .envelope{
-      width:min(400px,92%);
-      margin:100px auto 0;
+      width:min(380px,94%);
+      margin:90px auto 0;
       position:relative;
       height:220px;
     }
@@ -518,7 +563,7 @@
       z-index:2;
       opacity:0;
       background:#000;
-      border-radius:8px;
+      border-radius:10px;
       overflow:hidden;
     }
 
@@ -531,7 +576,7 @@
     #end-overlay.show .video-wrapper{
       opacity:1;
       animation:videoSlideUp 1.2s cubic-bezier(0.34,1.56,0.64,1) forwards;
-      animation-delay:0.9s;
+      animation-delay:0.7s;
     }
 
     @keyframes videoSlideUp{
@@ -554,7 +599,7 @@
       right:0;
       bottom:0;
       height:140px;
-      background:#f9f9f9;
+      background:#fafafa;
       border:1px solid rgba(197,160,89,0.22);
       border-radius:0 0 12px 12px;
       z-index:3;
@@ -594,140 +639,11 @@
     .end-title-name .overlay-title{
       margin:0;
       font-size:28px;
-      line-height:1.05;
     }
 
     @media(max-width:700px){
-      #envelope-overlay{
-        align-items:flex-start;
-        padding-top:18px;
-      }
-
-      .overlay-card{
-        width:94vw;
-        padding:22px 14px;
-        border-radius:24px;
-      }
-
-      .overlay-title{
-        font-size:42px;
-        line-height:1;
-      }
-
-      .overlay-subtitle{
-        font-size:.95rem;
-      }
-
-      .topline{
-        gap:8px;
-        letter-spacing:2px;
-        font-size:.72rem;
-      }
-
-      .topline:before,
-      .topline:after{
-        width:44px;
-      }
-
-      .wax-seal-heart{
-        width:125px;
-        height:125px;
-      }
-
-      .wax-seal-heart svg{
-        width:125px;
-        height:125px;
-      }
-
-      .content{
-        padding:24px 10px 60px;
-      }
-
-      .container{
-        width:94vw;
-      }
-
-      .hero{
-        padding:20px 10px 16px;
-      }
-
-      .kicker{
-        font-size:.72rem;
-        letter-spacing:2px;
-      }
-
-      .couple-line{
-        gap:8px;
-      }
-
-      .groom-name{
-        font-size:46px;
-      }
-
-      .bride-name{
-        font-size:58px;
-      }
-
-      .heart-symbol{
-        font-size:20px;
-      }
-
-      .date{
-        font-size:.98rem;
-      }
-
-      .countdown{
-        gap:7px;
-      }
-
-      .time-box{
-        min-width:66px;
-        padding:10px 8px 8px;
-        border-radius:14px;
-      }
-
-      .time-box span{
-        font-size:1.32rem;
-      }
-
-      .time-label{
-        font-size:.58rem;
-      }
-
-      .actions{
-        flex-direction:column;
-      }
-
-      .action-btn{
-        width:100%;
-      }
-
-      .end-card{
-        padding:20px 12px;
-      }
-
-      .envelope{
-        width:96%;
-        height:210px;
-      }
-    }
-
-    @media(max-width:380px){
-      .groom-name{
-        font-size:40px;
-      }
-
-      .bride-name{
-        font-size:50px;
-      }
-
-      .time-box{
-        min-width:62px;
-      }
-
-      .overlay-title{
-        font-size:36px;
-      }
+      .actions{ flex-direction:column; }
+      .action-btn{ width:100%; }
     }
   </style>
 </head>
@@ -736,14 +652,15 @@
   <div class="bg" aria-hidden="true"></div>
   <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
+  <!-- Initial Envelope Overlay -->
   <div id="envelope-overlay">
     <div class="overlay-card">
       <div class="topline">Save The Date</div>
       <div class="overlay-title">Fouad & Lea</div>
-      <p class="overlay-subtitle">Tap the heart to open the invitation</p>
+      <p class="overlay-subtitle">Tap the heart to reveal the invitation</p>
 
       <div class="wax-seal-heart" onclick="openInvite(event)" ontouchstart="openInvite(event)" role="button" aria-label="Open Fouad and Lea invitation">
-        <svg viewBox="0 0 220 220" width="150" height="150" aria-hidden="true">
+        <svg viewBox="0 0 220 220" width="145" height="145" aria-hidden="true">
           <defs>
             <radialGradient id="heartGradFL" cx="35%" cy="25%" r="80%">
               <stop offset="0%" stop-color="#ff4b6e"/>
@@ -756,8 +673,6 @@
           </defs>
           <path filter="url(#heartShadowFL)" fill="url(#heartGradFL)"
             d="M110 190 C110 190, 30 140, 30 88 C30 55, 55 34, 82 34 C98 34, 108 42, 110 52 C112 42, 122 34, 138 34 C165 34, 190 55, 190 88 C190 140, 110 190, 110 190Z"/>
-          <path fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="5"
-            d="M110 190 C110 190, 30 140, 30 88 C30 55, 55 34, 82 34 C98 34, 108 42, 110 52 C112 42, 122 34, 138 34 C165 34, 190 55, 190 88 C190 140, 110 190, 110 190Z"/>
           <text x="110" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="white">F & L</text>
         </svg>
       </div>
@@ -766,15 +681,17 @@
     </div>
   </div>
 
+  <!-- After RSVP Video Overlay -->
   <div id="end-overlay" aria-hidden="true">
     <div class="end-card">
+      <button class="close-overlay-btn" onclick="closeEndOverlay()" aria-label="Close message">&times;</button>
       <p class="end-msg">We can’t wait to celebrate with you! ✨</p>
 
       <div class="envelope">
         <div class="env-back"></div>
 
         <div class="video-wrapper">
-          <video id="endVideo" playsinline loop>
+          <video id="endVideo" playsinline controls loop preload="auto">
             <source src="your-video-file.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -790,6 +707,7 @@
     </div>
   </div>
 
+  <!-- Main Card Content -->
   <div class="content" id="main-content">
     <div class="container">
       <div class="hero">
@@ -817,12 +735,12 @@
 
       <div class="grid">
         <div class="card reveal-on-scroll">
-          <h3>Location</h3>
+          <h3>Ceremony</h3>
           <p><strong>Notre Dame des Dons</strong></p>
           <div class="meta">Sunday • 01/11/2026 • 5:00 PM</div>
           <div class="actions">
             <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFyy75vBijbQ1hvY7?g_st=ic">📍 Open in Maps</a>
-            <a class="action-btn" href="#" onclick="addToCalendar(event,'Wedding - Fouad & Lea','Notre Dame des Dons','20261101T150000Z','20261101T170000Z')">🗓️ Add to Calendar</a>
+            <a class="action-btn" href="#" onclick="addToCalendar(event)">🗓️ Add to Calendar</a>
           </div>
         </div>
 
@@ -831,18 +749,23 @@
           <p><strong>Atlal Plaza</strong></p>
           <div class="meta">Dinner and Celebration to follow</div>
           <div class="actions">
-            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ENTtKWAsiehHiY89A?g_st=ic">📍 Location</a>
+            <a class="action-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ENTtKWAsiehHiY89A?g_st=ic">📍 Open in Maps</a>
           </div>
         </div>
       </div>
 
       <div class="gift reveal-on-scroll" id="gift">
         <h3>Gift Registry</h3>
-        <p class="line">Send your gift using <strong>Whish Money</strong></p>
-        <p style="margin:10px 0 0; color:#666; font-size:.98rem;">
-          Whish Money Phone: <span class="num">+961 71057982</span><br>
-          Whish Account ID: <span class="num">20361932-03</span>
-        </p>
+        <p class="line">If you wish to celebrate us with a gift, you may do so via <strong>Whish Money</strong>:</p>
+        
+        <div class="gift-row">
+          <span>Phone: <strong>+961 71057982</strong></span>
+          <button class="copy-chip" onclick="copyText('+96171057982', 'Phone number copied!')">📋 Copy Phone</button>
+        </div>
+        <div class="gift-row">
+          <span>Account ID: <strong>20361932-03</strong></span>
+          <button class="copy-chip" onclick="copyText('20361932-03', 'Whish ID copied!')">📋 Copy ID</button>
+        </div>
       </div>
 
       <div class="rsvp reveal-on-scroll">
@@ -857,7 +780,7 @@
           <input type="hidden" id="sideInput" name="Side">
           <input type="hidden" id="maxAllowedInput" name="Max Allowed">
 
-          <button type="submit" id="submitBtn">CONFIRM ATTENDANCE</button>
+          <button type="submit" id="submitBtn" class="submit-btn">CONFIRM ATTENDANCE</button>
         </form>
 
         <div id="successMessage">We can’t wait to celebrate with you! ✨</div>
@@ -896,11 +819,6 @@
       if (maxAllowedInput) {
         maxAllowedInput.value = maxGuests;
       }
-
-      const nameInput = document.getElementById('fullName');
-      if (nameInput) {
-        nameInput.value = "";
-      }
     }
 
     function createFloatingHearts(x, y){
@@ -925,7 +843,6 @@
 
     function openInvite(evt){
       if(opened) return;
-
       opened = true;
       setupPersonalizedRSVP();
 
@@ -950,16 +867,14 @@
         content.classList.add("show-content");
         overlay.style.display = "none";
         revealOnScroll();
-      }, 800);
+      }, 750);
     }
 
     function revealOnScroll(){
       const els = document.querySelectorAll(".reveal-on-scroll");
-
       els.forEach(el => {
         const r = el.getBoundingClientRect();
-
-        if(r.top < window.innerHeight - 60) {
+        if(r.top < window.innerHeight - 50) {
           el.classList.add("reveal");
         }
       });
@@ -967,13 +882,14 @@
 
     window.addEventListener("scroll", revealOnScroll, { passive:true });
 
-    const weddingDate = new Date("November 01, 2026 17:00:00").getTime();
+    // Explicit timezone ISO string (+02:00 for Lebanon Winter Time)
+    const weddingDate = new Date("2026-11-01T17:00:00+02:00").getTime();
 
     function updateTimer(){
       const diff = weddingDate - new Date().getTime();
 
       if(diff < 0){
-        document.getElementById("timer").innerHTML = "The celebration has begun!";
+        document.getElementById("timer").innerHTML = "<div style='font-size:1.2rem;color:var(--gold);'>The celebration has begun!</div>";
         return;
       }
 
@@ -988,13 +904,35 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    function addToCalendar(e, title, location, start, end){
+    function addToCalendar(e){
       e.preventDefault();
+      // Exact UTC timestamps: 5:00 PM Beirut (UTC+2) = 15:00 UTC
+      const title = "Fouad & Lea Wedding";
+      const loc = "Notre Dame des Dons, Lebanon";
+      const start = "20261101T150000Z";
+      const end = "20261101T230000Z";
+      const details = "We can't wait to celebrate with you!";
 
       window.open(
-        `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&dates=${start}/${end}`,
+        `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&location=${encodeURIComponent(loc)}&dates=${start}/${end}&details=${encodeURIComponent(details)}&ctz=Asia/Beirut`,
         "_blank"
       );
+    }
+
+    function copyText(text, msg) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert(msg);
+      }).catch(() => {
+        prompt("Copy this:", text);
+      });
+    }
+
+    function closeEndOverlay() {
+      const endOverlay = document.getElementById("end-overlay");
+      const video = document.getElementById("endVideo");
+      endOverlay.classList.remove("show");
+      document.body.style.overflow = "auto";
+      if(video) video.pause();
     }
 
     const form = document.getElementById('rsvpForm');
@@ -1002,13 +940,6 @@
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-
-      if(video) {
-        video.muted = false;
-        video.play();
-        video.pause();
-        video.currentTime = 0;
-      }
 
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
@@ -1028,23 +959,16 @@
           document.body.style.overflow = "hidden";
 
           if(video) {
-            video.muted = false;
-            var playPromise = video.play();
-
-            if (playPromise !== undefined) {
-              playPromise.catch(error => {
-                console.log("Still blocked. User must tap screen.");
-                video.muted = true;
-                video.play();
-              });
-            }
+            // Keep muted by default so mobile allows autoplay
+            video.muted = true;
+            video.play().catch(err => console.log("Autoplay blocked:", err));
           }
-        }, 1200);
+        }, 800);
       })
       .catch(() => {
         btn.disabled = false;
         btn.innerHTML = "Try Again";
-        alert("Error!");
+        alert("Something went wrong while submitting. Please try again!");
       });
     });
 
